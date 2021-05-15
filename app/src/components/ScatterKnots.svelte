@@ -28,6 +28,14 @@
 		.domain(extent(data, d => d.rmajor))
 		.range([0, 12])
 		.nice();
+
+    const color = {
+        "MH":{pink: '#F28095', blue: '#8CE6FF'},
+        "H":{pink: '#F24968', blue: '#18C2E6'},
+        "A":{pink: '#BF213E', blue: '#007AC2'},
+        "P":{pink: '#A60321', blue: '#1262A1'},
+        "N":{pink: '#A60321', blue: '#1262A1'}
+    }
 		
 </script>
 <div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
@@ -36,35 +44,39 @@
             {#if i%2}
             <Ellipse 
                 x={x(d.cx)}
-                y={y(d.cy) - 3}
+                y={y(d.cy)}
+                i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill='red'
+                fill={color[d.type].pink}
                 rotation={Math.PI * .25}
             />
             <Ellipse 
                 x={x(d.cx)}
-                y={y(d.cy) - 3}
+                y={y(d.cy)}
+                i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill='blue'
+                fill={color[d.type].blue}
                 rotation={Math.PI * .75}
             />
             {:else}
             <Ellipse 
                 x={x(d.cx)}
-                y={y(d.cy) + 3}
+                y={y(d.cy)}
+                i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill='red'
+                fill={color[d.type].pink}
                 rotation={Math.PI * .25}
             />
             <Ellipse 
                 x={x(d.cx)}
-                y={y(d.cy) + 3}
+                y={y(d.cy)}
+                i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill='blue'
+                fill={color[d.type].blue}
                 rotation={Math.PI * .75}
             />
             {/if}
