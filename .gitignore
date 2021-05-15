@@ -9,6 +9,7 @@ npm-debug.log*
 /public/build/
 
 # Dependency directories
+/data/node_modules/
 /node_modules/
 /jspm_packages/
 
