@@ -11,7 +11,8 @@
 	export let oval_data;
 	export let oval_data2;
 
-	let selected = oval_data2.filter(d => d.name === "Depression")
+	let selected = oval_data2.filter(d => d.name === "Mental illness")
+
 </script>
 
 <main>
