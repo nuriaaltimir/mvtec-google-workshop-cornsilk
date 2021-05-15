@@ -11,7 +11,10 @@
 	export let oval_data;
 	export let oval_data2;
 
-	let selected = oval_data2.filter(d => d.name === "Mental illness")
+
+	let selected = oval_data2.filter(d => d.name === "Depression")
+	let types = [...new Set(oval_data2.map((d) => d.name))];
+
 
 </script>
 
@@ -27,6 +30,8 @@
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
 		{:else if block.type === 'blanket'}
+		<div class = "custom-select"> 
+		</div>	
 		<FullBlanket data={selected}/>
 		{:else if block.type === 'footer'}
 		<Footer>
