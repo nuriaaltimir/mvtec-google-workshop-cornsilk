@@ -6,18 +6,19 @@
     import { Canvas } from 'svelte-canvas'
 	import {scaleSqrt, scaleLinear} from 'd3-scale';
 	import {extent} from 'd3-array';
+    import Grid from './Grid.svelte'
     
     export let data;
-    let margin = {top: 20, right: 5, bottom: 20, left: 5};
+    let margin = {top: 20, right: 10, bottom: 20, left: 40};
 	let width, height;
 
     $: x = scaleLinear()
 		.domain(extent(data, d => d.cx))
-		.range([margin.left, width - margin.right - margin.left]);
+		.range([margin.left + 10, width - margin.right - margin.right]);
 	
 	$: y = scaleLinear()
 		.domain(extent(data, d => d.cy))
-        .range([margin.top, height - margin.bottom - margin.top]);
+        .range([margin.top, height - margin.bottom - margin.top ]);
         
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
@@ -40,6 +41,8 @@
 </script>
 <div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas {width} {height}>
+        <Grid type="x" scale={x} {data} {margin} />
+        <Grid type="y" scale={y} {data} {margin} />
             {#each data as d,i}
             {#if i%2}
             <Ellipse 
