@@ -9,7 +9,7 @@
     import Grid from './Grid.svelte'
     
     export let data;
-    let margin = {top: 20, right: 10, bottom: 20, left: 40};
+    let margin = {top: 20, right: 10, bottom: 20, left: 110};
 	let width, height;
 
     $: x = scaleLinear()
@@ -18,7 +18,7 @@
 	
 	$: y = scaleLinear()
 		.domain(extent(data, d => d.cy))
-        .range([margin.top, height - margin.bottom - margin.top ]);
+        .range([margin.top + 20, height - margin.bottom - margin.top ]);
         
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
