@@ -24,7 +24,7 @@
 				  <g>
 					<line y1="21.89" x2="674.49" y2="21.89" style="fill: none;stroke: #1ac1e5;stroke-miterlimit: 10;stroke-width: 2px"/>
 					<line y1="30.62" x2="674.49" y2="30.62" style="fill: none;stroke: #ef4a68;stroke-miterlimit: 10;stroke-width: 2px"/>
-					<text transform="translate(0 15.39)" style="font-size: 13px;fill: #231f20;font-family: OpenSans-Regular, Open Sans">This is people <tspan x="85.94" y="0" style="fill: #1ac1e5;font-family: OpenSans-Bold, Open Sans;font-weight: 700">asking for help</tspan><tspan x="182.33" y="0" xml:space="preserve"> on Google...</tspan></text>
+					<text transform="translate(0 15.39)" style="font-size: 13px;fill: #231f20;font-family: OpenSans-Regular, Open Sans">This is people <tspan x="85.94" y="0" style="fill: #1ac1e5;font-family: OpenSans-Bold, Open Sans;font-weight: 700">asking for help</tspan><tspan x="183.33" y="0" xml:space="preserve"> on Google...</tspan></text>
 					<text transform="translate(0.99 45.75)" style="font-size: 13px;fill: #231f20;font-family: OpenSans-Regular, Open Sans">and this is is people <tspan x="122.76" y="0" style="fill: #ef4a68;font-family: OpenSans-Bold, Open Sans;font-weight: 700">offering help</tspan><tspan x="206.1" y="0" style="fill: #1bc1e5"> </tspan><tspan x="209.48" y="0">on Google over time</tspan></text>
 					<ellipse cx="428.15" cy="30.31" rx="15.47" ry="35.31" transform="translate(142.18 345.62) rotate(-52.27)" style="fill: #ef4968;mix-blend-mode: multiply"/>
 					<ellipse cx="428.15" cy="30.31" rx="35.31" ry="15.47" transform="translate(79.68 276.15) rotate(-39.77)" style="fill: #1bc1e5;mix-blend-mode: multiply"/>
@@ -35,8 +35,7 @@
 					</g>
 				  </g>
 				</g>
-			  </svg>
-			  
+			  </svg>  
 		</div>
 		<ScatterKnots {...block} data={oval_data}/>
 		{:else if block.type === 'text'}
