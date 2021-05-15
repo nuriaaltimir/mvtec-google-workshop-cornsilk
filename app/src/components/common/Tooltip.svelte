@@ -16,7 +16,7 @@
 
 </script>
 
-<div class="tooltip" style="top: {y - 30}px; left: {x}px; opacity: {visible ? 1: 0}; width: {tooltipWidth}px">
+<div class="tooltip" style="top: {y}px; left: {x}px; opacity: {visible ? 1: 0}; width: {tooltipWidth}px">
 	{@html tip}
 </div>
 
@@ -29,5 +29,6 @@
         padding:.5rem;
 		transition: opacity .3s;
 		pointer-events: none;
+		transform:translate(50%,-85%);
 	}
 </style>
