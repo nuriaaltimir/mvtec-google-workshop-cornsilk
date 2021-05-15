@@ -9,7 +9,7 @@
     import Grid from './Grid.svelte';
 
     export let data;
-    let margin = {top: 20, right: 10, bottom: 20, left: 125};
+    let margin = {top: 10, right: 10, bottom: 10, left: 10};
 	let width, height;
 
     $: x = scaleLinear()
@@ -17,7 +17,7 @@
 		.range([margin.left + 10, width - margin.right - margin.right]);
 
 	$: y = scaleLinear()
-		.domain(extent(data, d => d.cy2))
+		.domain(extent(data, d => d.cy))
         .range([margin.top + 15, height - margin.bottom - margin.top ]);
 
     $: rx = scaleSqrt()
@@ -33,8 +33,8 @@
 </script>
 <div class='graphic square' bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas {width} {height}>
-        <!-- <Grid type="x" scale={x} {data} {margin} />
-        <Grid type="y" scale={y} {data} {margin} /> -->
+        <Grid type="x" scale={x} {data} {margin} />
+        <Grid type="y" scale={y} {data} {margin} />
             {#each data as d,i}
             {#if i%2}
             <Ellipse

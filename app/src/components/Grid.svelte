@@ -16,21 +16,21 @@
 				context.moveTo(scale(d.cx),margin.bottom);
 				context.lineTo(scale(d.cx), height - margin.bottom + tickSize);
                 context.strokeStyle = "lightgrey";
-                context.lineWidth = 3;
+                context.lineWidth = 2;
                 context.stroke();
 			} else if (type === "y") {
                 context.beginPath();
-				context.moveTo(width, scale(d.cy) -1 );
-				context.lineTo(margin.left - tickSize, scale(d.cy)- 1);
-                context.strokeStyle = "#052DCC";
-                context.lineWidth = 1;
+				context.moveTo(width, scale(d.cy) - 1.5 );
+				context.lineTo(margin.left - tickSize, scale(d.cy) - 1.5);
+                context.strokeStyle = "#26B0E6";
+                context.lineWidth = 2;
                 context.stroke();
 
                 context.beginPath();
-                context.moveTo(width, scale(d.cy) + 1);
-				context.lineTo(margin.left - tickSize, scale(d.cy)+ 1);
-                context.strokeStyle = "#F70089";
-                context.lineWidth = 1;
+                context.moveTo(width, scale(d.cy) + 1.5);
+				context.lineTo(margin.left - tickSize, scale(d.cy)+ 1.5);
+                context.strokeStyle = "#F16680";
+                context.lineWidth = 2;
                 context.stroke();
 
 			}

@@ -137,6 +137,9 @@ menu {
 	}
 
 	.col, .col-text { width:42rem; }
-	.wide, .square { width:60rem; }
-	.square { height:60rem; }
+	.wide { width:60rem; }
+	.square {
+		width: 20rem;
+		height:20rem; 
+	}
 }
