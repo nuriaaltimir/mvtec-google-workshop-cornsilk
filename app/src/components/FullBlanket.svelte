@@ -1,5 +1,12 @@
 <script>
     import Blanket from './Blanket.svelte'
     export let data;
+    let repetition = [...Array(20).keys()]
+
 </script>
-<Blanket {data} />
+
+<div class=full>
+    {#each repetition as r}
+        <Blanket {data} />
+    {/each}
+</div>
