@@ -9,38 +9,38 @@
     import Grid from './Grid.svelte'
 
     export let data;
-    let margin = {top: 20, right: 10, bottom: 20, left: 40};
-	let width, height;
+    let margin = {top: 20, right: 10, bottom: 20, left: 125};
+	  let width, height;
     let frame;
 
 
-    let dataMap = data.reduce((acc,d) => {
-      acc[d.cy - 1] = acc[d.cy - 1] ?? [];
-      acc[d.cy - 1][d.cx2 - 1] = d;
-      return acc;
-    }, [])
+    // let dataMap = data.reduce((acc,d) => {
+    //   acc[d.cy2 - 1] = acc[d.cy2 - 1] ?? [];
+    //   acc[d.cy2 - 1][d.cx - 1] = d;
+    //   return acc;
+    // }, [])
 
     let tooltipPosition = [-1,-1];
 
     $: x = scaleLinear()
-		.domain(extent(data, d => d.cx2))
+		.domain(extent(data, d => d.cx))
 		.range([margin.left + 10, width - margin.right - margin.right]);
 
-    $: stepX = (x.range()[1] - x.range()[0]) / dataMap[0].length;
-    $: stepY = (y.range()[1] - y.range()[0]) / dataMap.length;
+    // $: stepX = (x.range()[1] - x.range()[0]) / dataMap[0].length;
+    // $: stepY = (y.range()[1] - y.range()[0]) / dataMap.length;
 
 	$: y = scaleLinear()
-		.domain(extent(data, d => d.cy))
-        .range([margin.top, height - margin.bottom - margin.top ]);
+		.domain(extent(data, d => d.cy2))
+        .range([margin.top + 15, height - margin.bottom - margin.top ]);
 
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
-		.range([0, 5])
+		.range([0, 6])
         .nice();
 
     $: ry = scaleSqrt()
 		.domain(extent(data, d => d.rmajor))
-		.range([0, 12])
+		.range([0, 15])
 		.nice();
 
     function updateTooltip(x,y) {
@@ -71,14 +71,6 @@
       // cancelAnimationFrame(frame);
     }
 
-    const color = {
-        "MH":{pink: '#F28095', blue: '#8CE6FF'},
-        "H":{pink: '#F24968', blue: '#18C2E6'},
-        "A":{pink: '#BF213E', blue: '#007AC2'},
-        "P":{pink: '#A60321', blue: '#1262A1'},
-        "N":{pink: '#A60321', blue: '#1262A1'}
-    }
-
 </script>
 <div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas {width} {height} on:mousemove={handleMousemove} on:mouseenter={handleMouseenter} on:mouseleave={handleMouseleave}>
@@ -87,41 +79,41 @@
             {#each data as d,i}
             {#if i%2}
             <Ellipse
-                x={x(d.cx2)}
-                y={y(d.cy)}
-                i={d.cy}
+                x={x(d.cx)}
+                y={y(d.cy2)}
+                i={d.cy2}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill={color[d.type].pink}
-                rotation={Math.PI * .25}
+                fill='#F26680'
+                rotation={Math.PI * .75}
             />
             <Ellipse
-                x={x(d.cx2)}
-                y={y(d.cy)}
-                i={d.cy}
+                x={x(d.cx)}
+                y={y(d.cy2)}
+                i={d.cy2}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill={color[d.type].blue}
-                rotation={Math.PI * .75}
+                fill='#13B2ED'
+                rotation={Math.PI * .25}
             />
             {:else}
             <Ellipse
-                x={x(d.cx2)}
-                y={y(d.cy)}
-                i={d.cy}
+                x={x(d.cx)}
+                y={y(d.cy2)}
+                i={d.cy2}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill={color[d.type].pink}
-                rotation={Math.PI * .25}
+                fill='#F24968'
+                rotation={Math.PI * .75}
             />
             <Ellipse
-                x={x(d.cx2)}
-                y={y(d.cy)}
-                i={d.cy}
+                x={x(d.cx)}
+                y={y(d.cy2)}
+                i={d.cy2}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill={color[d.type].blue}
-                rotation={Math.PI * .75}
+                fill='#18C2E6'
+                rotation={Math.PI * .25}
             />
             {/if}
             {/each}
