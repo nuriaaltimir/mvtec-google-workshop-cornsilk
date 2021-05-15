@@ -11,6 +11,7 @@
 </script>
 
 <main>
+hi how are you
 	{#each content as block}
 
 		{#if block.type === 'header'}
