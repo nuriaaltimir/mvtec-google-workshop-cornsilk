@@ -23,11 +23,19 @@
 			context.strokeStyle = fill;
 			context.lineWidth = 2.4;
 			context.beginPath();
-			context.ellipse(x, y + last, rx * last/10, ry * last/10, rotation, 0, Math.PI * 2);
+			context.ellipse(x, y, rx * last/10, ry * last/10, rotation, 0, Math.PI * 2);
 			context.globalAlpha = 0.6;
-			context.globalCompositeOperation = 'soft-light';
+			context.globalCompositeOperation = 'multiply';
 			context.stroke();
 		}	
+
+		// context.strokeStyle = fill;
+		// context.lineWidth = 2.4;
+		// context.beginPath();
+		// context.ellipse(x, y + last, rx * last/10, ry * last/10, rotation, 0, Math.PI * 2);
+		// context.globalAlpha = 0.6;
+		// context.globalCompositeOperation = 'soft-light';
+		// context.stroke();
 	}
 
 </script>

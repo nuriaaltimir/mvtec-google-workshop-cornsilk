@@ -9,7 +9,7 @@
     import Grid from './Grid.svelte'
 
     export let data;
-    let margin = {top: 20, right: 10, bottom: 20, left: 40};
+    let margin = {top: 20, right: 10, bottom: 20, left: 125};
 	  let width, height;
     let frame;
 
@@ -31,16 +31,16 @@
 
 	$: y = scaleLinear()
 		.domain(extent(data, d => d.cy))
-        .range([margin.top, height - margin.bottom - margin.top ]);
+        .range([margin.top + 15, height - margin.bottom - margin.top ]);
 
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
-		.range([0, 5])
+		.range([0, 6])
         .nice();
 
     $: ry = scaleSqrt()
 		.domain(extent(data, d => d.rmajor))
-		.range([0, 12])
+		.range([0, 15])
 		.nice();
 
     function updateTooltip(x,y) {
@@ -71,14 +71,6 @@
       // cancelAnimationFrame(frame);
     }
 
-    const color = {
-        "MH":{pink: '#F28095', blue: '#8CE6FF'},
-        "H":{pink: '#F24968', blue: '#18C2E6'},
-        "A":{pink: '#BF213E', blue: '#007AC2'},
-        "P":{pink: '#A60321', blue: '#1262A1'},
-        "N":{pink: '#A60321', blue: '#1262A1'}
-    }
-
 </script>
 <div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas {width} {height} on:mousemove={handleMousemove} on:mouseenter={handleMouseenter} on:mouseleave={handleMouseleave}>
@@ -92,8 +84,8 @@
                 i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill={color[d.type].pink}
-                rotation={Math.PI * .25}
+                fill='#F26680'
+                rotation={Math.PI * .75}
             />
             <Ellipse
                 x={x(d.cx)}
@@ -101,8 +93,8 @@
                 i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill={color[d.type].blue}
-                rotation={Math.PI * .75}
+                fill='#13B2ED'
+                rotation={Math.PI * .25}
             />
             {:else}
             <Ellipse
@@ -111,8 +103,8 @@
                 i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill={color[d.type].pink}
-                rotation={Math.PI * .25}
+                fill='#F24968'
+                rotation={Math.PI * .75}
             />
             <Ellipse
                 x={x(d.cx)}
@@ -120,8 +112,8 @@
                 i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill={color[d.type].blue}
-                rotation={Math.PI * .75}
+                fill='#18C2E6'
+                rotation={Math.PI * .25}
             />
             {/if}
             {/each}
@@ -130,6 +122,6 @@
 </div>
 <style>
     .overview {
-        height: 50vw;
+        height: 60vw;
     }
 </style>
