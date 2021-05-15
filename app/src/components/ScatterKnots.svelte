@@ -24,6 +24,7 @@
 
     $: tooltipPosition = [-1,-1];
     $: tooltipTip = null;
+    $: tooltipVisible = false;
 
     $: x = scaleLinear()
 		.domain(extent(data, d => d.cx))
@@ -32,9 +33,9 @@
     $: stepX = (x.range()[1] - x.range()[0]) / dataMap[0].length;
     $: stepY = (y.range()[1] - y.range()[0]) / dataMap.length;
 
-	$: y = scaleLinear()
-		.domain(extent(data, d => d.cy))
-        .range([margin.top + 15, height - margin.bottom - margin.top ]);
+	  $: y = scaleLinear()
+		  .domain(extent(data, d => d.cy))
+      .range([margin.top + 15, height - margin.bottom - margin.top ]);
 
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
@@ -61,7 +62,7 @@
       tooltipPosition = [col, row];
       const item = dataMap[row][col];
       tooltipTip = `
-        <b>${item.lable}</b>
+        <b>${item.lable === 'Beirut' ? 'Crisis' : item.lable}</b>
         <br/>
         ${timeFormat('%B %Y')(new Date(item.year, item.month - 1, 1))}
         <br/><br/>
@@ -78,14 +79,9 @@
       const position = getMousePos(event.target, event);
       // console.log(position);
 
-      const row = Math.min(Math.max(0, Math.floor((position.y - (margin.top)) / stepY)), dataMap.length - 1);
+      const row = Math.min(Math.max(0, Math.floor((position.y - (margin.top) - 15) / stepY)), dataMap.length - 1);
       const col = Math.min(Math.max(0, Math.floor((position.x - (margin.left + 10)) / stepX)), dataMap[row].length - 1);
 
-      // const row = Math.round(position.y / stepY);
-      // const col = Math.round(position.x / stepX);
-      // console.log(position.x, stepX, width)
-      // console.log(col,row,'->');
-      // console.log(dataMap[row][col])
       if(tooltipPosition.col !== col || tooltipPosition.row !== row) {
         updateTooltip(col, row);
       }
@@ -93,18 +89,21 @@
   	}
     // LET'S USE THIS LATER TO IMPROVE THE PERFORMANCE
     function handleMouseenter() {
-      console.log('ENTER');
-      console.log('width', width)
-      console.log('range', x.range())
-      console.log('stepX', stepX)
-      console.log('margins', margin)
+      // console.log('ENTER');
+      // console.log('width', width)
+      // console.log('range', x.range())
+      // console.log('stepX', stepX)
+      // console.log('margins', margin)
+      // console.log('data', dataMap)
+      tooltipVisible = true;
       // (function loop() {
   		// 	frame = requestAnimationFrame(loop);
   		// 	// console.log(tooltipPosition);
   		// })();
     }
     function handleMouseleave() {
-      console.log('LEAVE');
+      //console.log('LEAVE');
+      tooltipVisible = false;
       // cancelAnimationFrame(frame);
     }
 
@@ -155,7 +154,7 @@
             {/if}
             {/each}
     </Canvas>
-    <Tooltip x={tooltipPosition[0] * stepX} y={stepY * tooltipPosition[1]} width={100} height={100} tip={tooltipTip} visible={true}/>
+    <Tooltip x={tooltipPosition[0] * stepX} y={stepY * tooltipPosition[1]} tooltipWidth={200} width={width} tip={tooltipTip} visible={tooltipVisible}/>
 </div>
 <style>
     .overview {
