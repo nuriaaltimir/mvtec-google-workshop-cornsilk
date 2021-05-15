@@ -8,6 +8,8 @@
 	import Footer from './components/common/Footer.svelte'
 
 	export let content;
+	export let oval_data;
+	console.log(oval_data)
 </script>
 
 <main>
