@@ -18,7 +18,7 @@
 		{#if block.type === 'header'}
 		<Header {...block} />
 		{:else if block.type === 'overview'}
-		<ScatterKnots {...block} />
+		<ScatterKnots {...block} data={oval_data}/>
 		{:else if block.type === 'text'}
 		<Text {...block} />
 		{:else if block.type === 'chart'}
