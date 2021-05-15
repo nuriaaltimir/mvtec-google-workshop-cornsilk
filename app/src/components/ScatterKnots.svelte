@@ -33,8 +33,8 @@
 </script>
 <div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas {width} {height}>
-        <Grid type="x" scale={x} tickNumber={8} {margin} />
-        <Grid type="y" scale={y} tickNumber={8} {margin} />
+        <Grid type="x" scale={x} tickNumber={64} {margin} />
+        <Grid type="y" scale={y} tickNumber={34} {margin} />
             {#each data as d,i}
             {#if i%2}
             <Ellipse 
