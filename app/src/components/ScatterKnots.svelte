@@ -6,6 +6,7 @@
     import { Canvas } from 'svelte-canvas'
 	import {scaleSqrt, scaleLinear} from 'd3-scale';
 	import {extent} from 'd3-array';
+    import Grid from './Grid.svelte'
     
     export let data;
     let margin = {top: 20, right: 5, bottom: 20, left: 5};
@@ -32,6 +33,8 @@
 </script>
 <div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas {width} {height}>
+        <Grid type="x" scale={x} tickNumber={8} {margin} />
+        <Grid type="y" scale={y} tickNumber={8} {margin} />
             {#each data as d,i}
             {#if i%2}
             <Ellipse 
@@ -39,7 +42,7 @@
                 y={y(d.cy) - 3}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill='red'
+                fill='#F70089'
                 rotation={Math.PI * .25}
             />
             <Ellipse 
@@ -47,7 +50,7 @@
                 y={y(d.cy) - 3}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill='blue'
+                fill='#052DCC'
                 rotation={Math.PI * .75}
             />
             {:else}
@@ -56,7 +59,7 @@
                 y={y(d.cy) + 3}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill='red'
+                fill='#F70089'
                 rotation={Math.PI * .25}
             />
             <Ellipse 
@@ -64,7 +67,7 @@
                 y={y(d.cy) + 3}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill='blue'
+                fill='#052DCC'
                 rotation={Math.PI * .75}
             />
             {/if}
