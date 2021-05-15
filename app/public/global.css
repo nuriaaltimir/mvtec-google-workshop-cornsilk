@@ -17,7 +17,7 @@ h1, h2, h3 { font-family: 'Bitter', sans-serif; }
 
 h1 {
 	font-weight: 200;
-	font-size: 3rem !important;;
+	font-size: 3rem !important;
 	line-height: 1.15;
 }
 h2, h3, h4, p { line-height: 1.5; }
@@ -35,7 +35,7 @@ h4 {
 	line-height: 1.5 !important;
 }
 p { 
-	font-size: 1.25rem;
+	font-size: 1.1rem !important;
 	font-weight: 300;
 	font-family: 'Roboto', sans-serif;
 }
@@ -69,9 +69,13 @@ a:hover {
 	margin-bottom:3rem;
 }
 
-.col, .wide {
+.col, .col-text, .wide {
 	margin: 0 auto;
 	width: 100%;
+}
+
+.col-text {
+	padding: 0 1rem;
 }
 
 .full {
@@ -124,6 +128,6 @@ menu {
 		width:100%;
 	}
 
-	.col { width:40rem; }
+	.col, .col-text { width:42rem; }
 	.wide { width:60rem; }
 }

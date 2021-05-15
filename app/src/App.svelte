@@ -4,7 +4,7 @@
 	import ScatterKnots from './components/ScatterKnots.svelte'
 	import Text from './components/Text.svelte'
 	import Knit from './components/Knit.svelte'
-	import Blanket from './components/Blanker.svelte'
+	import Blanket from './components/Blanket.svelte'
 	import Footer from './components/common/Footer.svelte'
 
 	export let content;

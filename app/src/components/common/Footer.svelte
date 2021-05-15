@@ -45,6 +45,8 @@
         background-color:#284385;
         color:#FFF;
         padding-top:5rem;
+        padding-left:1rem;
+        padding-right:1rem;
     }
     .footer p {
         font-size: 1rem;
@@ -52,6 +54,13 @@
 
     b {
         font-weight: 700;
+    }
+
+    @media screen and (min-width: 42rem) {
+        .footer {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
 </style>
