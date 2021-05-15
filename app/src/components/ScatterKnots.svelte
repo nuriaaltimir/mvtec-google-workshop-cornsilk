@@ -51,7 +51,7 @@
                 i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill={color[d.type].pink}
+                fill='#F24968'
                 rotation={Math.PI * .25}
             />
             <Ellipse 
@@ -60,7 +60,7 @@
                 i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill={color[d.type].blue}
+                fill='#18C2E6'
                 rotation={Math.PI * .75}
             />
             {:else}
@@ -70,7 +70,7 @@
                 i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill={color[d.type].pink}
+                fill='#F24968'
                 rotation={Math.PI * .25}
             />
             <Ellipse 
@@ -79,7 +79,7 @@
                 i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill={color[d.type].blue}
+                fill='#18C2E6'
                 rotation={Math.PI * .75}
             />
             {/if}
