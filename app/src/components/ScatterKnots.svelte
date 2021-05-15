@@ -82,11 +82,6 @@
       const row = Math.min(Math.max(0, Math.floor((position.y - (margin.top) - 15) / stepY)), dataMap.length - 1);
       const col = Math.min(Math.max(0, Math.floor((position.x - (margin.left + 10)) / stepX)), dataMap[row].length - 1);
 
-      // const row = Math.round(position.y / stepY);
-      // const col = Math.round(position.x / stepX);
-      // console.log(position.x, stepX, width)
-      // console.log(col,row,'->');
-      // console.log(dataMap[row][col])
       if(tooltipPosition.col !== col || tooltipPosition.row !== row) {
         updateTooltip(col, row);
       }

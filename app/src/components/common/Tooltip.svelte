@@ -19,7 +19,6 @@
 </script>
 
 <div class="tooltip" style="top: {y}px; left: {x + dx}px; opacity: {visible ? 1: 0}; width: {tooltipWidth}px">
-	{dx},{width}
 	{@html tip}
 </div>
 
