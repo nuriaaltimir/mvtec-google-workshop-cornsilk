@@ -1,14 +1,31 @@
 <script>
 	import Menu from './components/common/Menu.svelte'
-	import Test from './test/Test.svelte'
+	import Header from './components/Header.svelte'
+	import ScatterKnots from './components/ScatterKnots.svelte'
+	import Text from './components/Text.svelte'
+	import Knit from './components/Knit.svelte'
+	import Blanket from './components/Blanker.svelte'
 	import Footer from './components/common/Footer.svelte'
 
+	export let content;
 </script>
 
 <main>
+	{#each content as block}
 
-	<Test />
-
+		{#if block.type === 'header'}
+		<Header {...block} />
+		{:else if block.type === 'overview'}
+		<ScatterKnots {...block} />
+		{:else if block.type === 'text'}
+		<Text {...block} />
+		{:else if block.type === 'chart'}
+		<Knit {...block} />
+		{:else if block.type === 'blanket'}
+		<Blanket {...block} />
+		{/if}
+	{/each}
+	
 	<Footer>
 		<div slot="about">
 			I could not but remark the striking difference of his attention, and that of Lord Orville: the latter has such gentleness of manners, such delicacy of conduct, and an air so respectful, that, when he flatters most, he never distresses; and when he most confers honour, appears to receive it! The former obtrudes his attention, and forces mine; it is so pointed, that it always confuses me, and so public, that it attracts general notice. Indeed I have sometimes thought that he would rather wish, than dislike to have his partiality for me known, as he takes great care to prevent my being spoken to by any but himself.
