@@ -20,17 +20,17 @@
                 context.stroke();
 			} else if (type === "y") {
                 context.beginPath();
-				context.moveTo(width, scale(d.cy) -1 );
-				context.lineTo(margin.left - tickSize, scale(d.cy)- 1);
-                context.strokeStyle = "#052DCC";
-                context.lineWidth = 1;
+				context.moveTo(width, scale(d.cy) - 1.5 );
+				context.lineTo(margin.left - tickSize, scale(d.cy) - 1.5);
+                context.strokeStyle = "#13B2ED";
+                context.lineWidth = 2;
                 context.stroke();
 
                 context.beginPath();
-                context.moveTo(width, scale(d.cy) + 1);
-				context.lineTo(margin.left - tickSize, scale(d.cy)+ 1);
-                context.strokeStyle = "#F70089";
-                context.lineWidth = 1;
+                context.moveTo(width, scale(d.cy) + 1.5);
+				context.lineTo(margin.left - tickSize, scale(d.cy) + 1.5);
+                context.strokeStyle = "#F26680";
+                context.lineWidth = 2;
                 context.stroke();
 
 			}
