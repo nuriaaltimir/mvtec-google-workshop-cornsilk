@@ -4,7 +4,7 @@
 	import ScatterKnots from './components/ScatterKnots.svelte'
 	import Text from './components/Text.svelte'
 	import Knit from './components/Knit.svelte'
-	import Blanket from './components/Blanket.svelte'
+	import FullBlanket from './components/FullBlanket.svelte'
 	import Footer from './components/common/Footer.svelte'
 
 	export let content;
@@ -26,7 +26,7 @@
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
 		{:else if block.type === 'blanket'}
-		<Blanket {...block} data={selected}/>
+		<FullBlanket data={selected}/>
 		{:else if block.type === 'footer'}
 		<Footer>
 			<div slot="about">
