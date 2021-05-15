@@ -2,16 +2,14 @@
 <script>
 	//import Axis from '../common/Axis.svelte';
 	//import Tooltip from '../common/Tooltip.svelte'
-    import Knot from 'Knot.svelte'
+    import Ellipse from './Ellipse.svelte'
+    import { Canvas } from 'svelte-canvas'
 	import {scaleSqrt, scaleLinear} from 'd3-scale';
 	import {extent} from 'd3-array';
     
     export let data;
-	// export let margin = {top: 20, right: 5, bottom: 20, left: 5};
+    let margin = {top: 20, right: 5, bottom: 20, left: 5};
 	let width, height;
-
-    // const subjectamount=61;
-    // const separation=height/subjectamount;
 
     $: x = scaleLinear()
 		.domain(extent(data, d => d.cx))
@@ -19,48 +17,63 @@
 	
 	$: y = scaleLinear()
 		.domain(extent(data, d => d.cy))
-        .range([height - margin.bottom - margin.top, margin.top]);
+        .range([margin.top, height - margin.bottom - margin.top]);
         
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
-		.range([0, 7])
+		.range([0, 5])
         .nice();
 
-     $: ry = scaleSqrt()
+    $: ry = scaleSqrt()
 		.domain(extent(data, d => d.rmajor))
-		.range([0, 21])
+		.range([0, 12])
 		.nice();
 		
-
 </script>
-<div class='graphic' bind:clientWidth={width} bind:clientHeight={height}>
-    <svg xmlns:svg='https://www.w3.org/2000/svg' 
-        viewBox='0 0 {width} {height}'
-        {width}
-        {height}>
-    
-        <g>
-            {#each data as d}
-            <ellipse 
-                cx={x(d.cx)}
-                cy={y(d.cy)}
+<div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
+    <Canvas {width} {height}>
+            {#each data as d,i}
+            {#if i%2}
+            <Ellipse 
+                x={x(d.cx)}
+                y={y(d.cy) - 3}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill-opacity=.8
                 fill='red'
-                transform='rotate(45deg)'
+                rotation={Math.PI * .25}
             />
-            <ellipse 
-                cx={x(d.cx)}
-                cy={y(d.cy)}
+            <Ellipse 
+                x={x(d.cx)}
+                y={y(d.cy) - 3}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill-opacity=.8
                 fill='blue'
-                transform='rotate(-45deg)'
+                rotation={Math.PI * .75}
             />
+            {:else}
+            <Ellipse 
+                x={x(d.cx)}
+                y={y(d.cy) + 3}
+                rx={rx(d.rminorR)}
+                ry={ry(d.rmajorR)}
+                fill='red'
+                rotation={Math.PI * .25}
+            />
+            <Ellipse 
+                x={x(d.cx)}
+                y={y(d.cy) + 3}
+                rx={rx(d.rminor)}
+                ry={ry(d.rmajor)}
+                fill='blue'
+                rotation={Math.PI * .75}
+            />
+            {/if}
             {/each}
-        </g>
-    </svg>
+    </Canvas>
 
-    </div>
+</div>
+<style>
+    .overview {
+        height: 50vw;
+    }
+</style>
