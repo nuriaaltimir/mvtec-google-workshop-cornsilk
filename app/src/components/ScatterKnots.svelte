@@ -1,10 +1,12 @@
 
 <script>
 	//import Axis from '../common/Axis.svelte';
-	//import Tooltip from '../common/Tooltip.svelte'
-    import Ellipse from './Ellipse.svelte'
-    import { Canvas } from 'svelte-canvas'
+	import Tooltip from './common/Tooltip.svelte'
+  import Ellipse from './Ellipse.svelte'
+  import { Canvas } from 'svelte-canvas'
 	import {scaleSqrt, scaleLinear} from 'd3-scale';
+  import { format } from 'd3-format';
+  import { timeFormat } from 'd3-time-format';
 	import {extent} from 'd3-array';
     import Grid from './Grid.svelte'
 
@@ -20,7 +22,8 @@
       return acc;
     }, [])
 
-    let tooltipPosition = [-1,-1];
+    $: tooltipPosition = [-1,-1];
+    $: tooltipTip = null;
 
     $: x = scaleLinear()
 		.domain(extent(data, d => d.cx))
@@ -43,14 +46,44 @@
 		.range([0, 15])
 		.nice();
 
-    function updateTooltip(x,y) {
-      console.log(dataMap[y][x]);
+    function  getMousePos(canvas, evt) {
+      var rect = canvas.getBoundingClientRect(), // abs. size of element
+          scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X
+          scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
+
+      return {
+        x: (evt.clientX - rect.left),   // scale mouse coordinates after they have
+        y: (evt.clientY - rect.top)     // been adjusted to be relative to element
+      }
+    }
+
+    function updateTooltip(col, row) {
+      tooltipPosition = [col, row];
+      const item = dataMap[row][col];
+      tooltipTip = `
+        <b>${item.lable}</b>
+        <br/>
+        ${timeFormat('%B %Y')(new Date(item.year, item.month - 1, 1))}
+        <br/><br/>
+        <b>Help</b>
+        <br/>
+        Requested ${format(',.2~f')(item.value)}
+        &harr;
+        ${format(',.2~f')(item.value2)} Offered
+      `
     }
 
     function handleMousemove(event) {
-      const row = Math.min(Math.max(0, Math.floor((event.clientY - (margin.top)) / stepY)), dataMap.length - 1);
-      const col = Math.min(Math.max(0, Math.floor((event.clientX - (margin.left + 10)) / stepX)), dataMap[row].length - 1);
+      // console.log(event)
+      const position = getMousePos(event.target, event);
+      // console.log(position);
 
+      const row = Math.min(Math.max(0, Math.floor((position.y - (margin.top)) / stepY)), dataMap.length - 1);
+      const col = Math.min(Math.max(0, Math.floor((position.x - (margin.left + 10)) / stepX)), dataMap[row].length - 1);
+
+      // const row = Math.round(position.y / stepY);
+      // const col = Math.round(position.x / stepX);
+      // console.log(position.x, stepX, width)
       // console.log(col,row,'->');
       // console.log(dataMap[row][col])
       if(tooltipPosition.col !== col || tooltipPosition.row !== row) {
@@ -61,6 +94,10 @@
     // LET'S USE THIS LATER TO IMPROVE THE PERFORMANCE
     function handleMouseenter() {
       console.log('ENTER');
+      console.log('width', width)
+      console.log('range', x.range())
+      console.log('stepX', stepX)
+      console.log('margins', margin)
       // (function loop() {
   		// 	frame = requestAnimationFrame(loop);
   		// 	// console.log(tooltipPosition);
@@ -118,7 +155,7 @@
             {/if}
             {/each}
     </Canvas>
-
+    <Tooltip x={tooltipPosition[0] * stepX} y={stepY * tooltipPosition[1]} width={100} height={100} tip={tooltipTip} visible={true}/>
 </div>
 <style>
     .overview {
