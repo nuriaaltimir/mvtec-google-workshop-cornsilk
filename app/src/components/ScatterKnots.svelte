@@ -93,7 +93,7 @@
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
                 fill='#F24968'
-                rotation={Math.PI * .25}
+                rotation={Math.PI * .75}
             />
             <Ellipse
                 x={x(d.cx)}
@@ -102,7 +102,7 @@
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
                 fill='#18C2E6'
-                rotation={Math.PI * .75}
+                rotation={Math.PI * .25}
             />
             {:else}
             <Ellipse
@@ -112,7 +112,7 @@
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
                 fill='#F24968'
-                rotation={Math.PI * .25}
+                rotation={Math.PI * .75}
             />
             <Ellipse
                 x={x(d.cx)}
@@ -121,7 +121,7 @@
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
                 fill='#18C2E6'
-                rotation={Math.PI * .75}
+                rotation={Math.PI * .25}
             />
             {/if}
             {/each}
@@ -130,6 +130,6 @@
 </div>
 <style>
     .overview {
-        height: 50vw;
+        height: 60vw;
     }
 </style>
