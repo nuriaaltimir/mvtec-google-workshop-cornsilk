@@ -14,9 +14,12 @@
 
 	$: ty = y + 30;
 
+	$: dx = x > width / 2 ? -tooltipWidth/2 : 0;
+
 </script>
 
-<div class="tooltip" style="top: {y}px; left: {x}px; opacity: {visible ? 1: 0}; width: {tooltipWidth}px">
+<div class="tooltip" style="top: {y}px; left: {x + dx}px; opacity: {visible ? 1: 0}; width: {tooltipWidth}px">
+	{dx},{width}
 	{@html tip}
 </div>
 
