@@ -9,6 +9,9 @@
 
 	export let content;
 	export let oval_data;
+	export let oval_data2;
+
+	let selected = oval_data2.filter(d => d.lable === "Depression")
 </script>
 
 <main>
@@ -43,7 +46,7 @@
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
 		{:else if block.type === 'blanket'}
-		<Blanket {...block} />
+		<Blanket {...block} data={selected}/>
 		{:else if block.type === 'footer'}
 		<Footer>
 			<div slot="about">
