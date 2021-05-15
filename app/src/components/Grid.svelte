@@ -44,7 +44,7 @@
     data.forEach(d => {
 			if (type === "x") {
 			} else if (type === "y") {
-                context.font="0.9em Open Sans";
+                context.font="0.9em Bitter";
 				context.fillText(d.lable, margin.left - tickSize - 1, scale(d.cy));
                 context.fillStyle = "rgba(189, 189, 189)";
 
