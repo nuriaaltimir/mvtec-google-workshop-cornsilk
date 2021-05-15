@@ -8,7 +8,7 @@ const app = new App({
     props:{
         content:story.article,
         oval_data:OvalData,
-        oval_data2:OvalData
+        oval_data2:OvalData2
     } 
 })
 

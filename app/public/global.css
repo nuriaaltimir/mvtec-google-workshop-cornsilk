@@ -72,7 +72,7 @@ a:hover {
 	margin-bottom:3rem;
 }
 
-.col, .col-text, .wide {
+.col, .col-text, .wide, .square {
 	margin: 0 auto;
 	width: 100%;
 }
@@ -138,4 +138,8 @@ menu {
 
 	.col, .col-text { width:42rem; }
 	.wide { width:60rem; }
+	.square {
+		width: 20rem;
+		height:20rem; 
+	}
 }
