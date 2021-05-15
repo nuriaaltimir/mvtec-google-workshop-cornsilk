@@ -80,6 +80,12 @@ a:hover {
 	width: 100%;
 }
 
+.square {
+	margin: 0 auto;
+	display: inline-block;
+}
+
+
 .col-text {
 	padding: 0 1rem;
 }
