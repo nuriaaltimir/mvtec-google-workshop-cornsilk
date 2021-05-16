@@ -6,16 +6,17 @@
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
 	import Footer from './components/common/Footer.svelte'
+	import { Select, MaterialApp } from 'svelte-materialify';
 
 	export let content;
 	export let oval_data;
 	export let oval_data2;
+	let value = [];
 
+	$: selected = oval_data2.filter(d => d.name === "Depression");
 
-	let selected = oval_data2.filter(d => d.name === "Depression")
-	let types = [...new Set(oval_data2.map((d) => d.name))];
-
-
+	const types = [...new Set(oval_data2.map((d) => d.name))];
+	$:console.log(value)
 </script>
 
 <main>
@@ -30,8 +31,11 @@
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
 		{:else if block.type === 'blanket'}
-		<div class = "custom-select"> 
-		</div>	
+		<div class='col-text select'>
+		<MaterialApp>
+			<Select activeClass="gray" bind:value chips multiple outlined items={types}>Pick a topic</Select>
+		</MaterialApp>
+		</div>
 		<FullBlanket data={selected}/>
 		{:else if block.type === 'footer'}
 		<Footer>
@@ -59,7 +63,8 @@
 		padding-bottom: 0;
 		margin: 0 auto;
 	}
-	section {
-		height: 90vh;
+	.select {
+		margin-top: 3rem;
+		margin-bottom: 3rem;
 	}
 </style>

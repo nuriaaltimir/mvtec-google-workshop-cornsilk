@@ -6,7 +6,5 @@
 </script>
 
 <div class=full>
-    {#each repetition as r}
-        <Blanket {data} />
-    {/each}
+    <Blanket {data} />
 </div>
