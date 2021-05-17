@@ -7,12 +7,13 @@
 	import FullBlanket from './components/FullBlanket.svelte'
 	import Blanket from './components/Blanket.svelte'
 	import Footer from './components/common/Footer.svelte'
+	import { Select, MaterialApp } from 'svelte-materialify';
 
 	export let content;
 	export let oval_data;
-	// export let oval_data2;
+	export let oval_data2;
 
-	let oval_data2 = oval_data.map(d => {return {
+	oval_data2 = oval_data.map(d => {return {
         // cx:d.order, // time in months
         cx:d.month, // time in months
         // cy:d.index, // subjects ordered
@@ -31,7 +32,7 @@
         };}
 		);
 	let selected = oval_data2.filter(d => d.type === "MH")
-	let types = [...new Set(oval_data2.map((d) => d.name))];
+	// let types = [...new Set(oval_data2.map((d) => d.name))];
 
 	// blanket data transform
 	// console.log(selected)
@@ -55,6 +56,14 @@
 	console.log(oval_data)
 	console.log(oval_data2)
 
+	// FROM REMOTE
+	// export let oval_data2;
+	let value = [];
+
+	// $: selected = oval_data2.filter(d => d.name === "Depression");
+
+	const types = [...new Set(oval_data2.map((d) => d.name))];
+	$:console.log(value)
 </script>
 
 <main>
@@ -72,6 +81,11 @@
 		{:else if block.type === 'blanket'}
 		<div class = "custom-select"> 
 		</div>	
+		<div class='col-text select'>
+		<MaterialApp>
+			<Select activeClass="gray" bind:value chips multiple outlined items={types}>Pick a topic</Select>
+		</MaterialApp>
+		</div>
 		<FullBlanket data={dataNew}/>
 		{:else if block.type === 'footer'}
 		<Footer>
@@ -99,7 +113,8 @@
 		padding-bottom: 0;
 		margin: 0 auto;
 	}
-	section {
-		height: 90vh;
+	.select {
+		margin-top: 3rem;
+		margin-bottom: 3rem;
 	}
 </style>
