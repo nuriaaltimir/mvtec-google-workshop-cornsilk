@@ -32,5 +32,6 @@
 		transition: opacity .3s;
 		pointer-events: none;
 		transform:translate(50%,-85%);
+		z-index: 1;
 	}
 </style>
