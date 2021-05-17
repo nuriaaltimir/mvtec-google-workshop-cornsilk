@@ -68,9 +68,9 @@
         <br/><br/>
         <b>Help</b>
         <br/>
-        Requested ${format(',.2~f')(item.value)}
+        Requested <span class="requested">${format(',.2~f')(item.value)}</span>
         &harr;
-        ${format(',.2~f')(item.value2)} Offered
+        <span class="offered">${format(',.2~f')(item.value2)}</span> Offered
       `
     }
 
@@ -160,4 +160,5 @@
     .overview {
         height: 60vw;
     }
+
 </style>

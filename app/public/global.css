@@ -148,7 +148,18 @@ menu {
 	.col, .col-text { width:42rem; }
 	.wide { width:60rem; }
 	.square {
-		width: 20rem;
-		height:20rem; 
+		width: 13rem;
+		height:13rem; 
 	}
+}
+
+/* Tooltip */
+.requested{
+	color: #13B2ED;
+	font-weight: 700;
+}
+
+.offered{
+	color: #F24968;
+	font-weight: 700;
 }
