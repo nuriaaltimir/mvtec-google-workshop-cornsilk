@@ -92,7 +92,10 @@
 			<Select activeClass="gray" bind:value chips multiple outlined items={dataNew}>Pick a topic</Select>
 		</MaterialApp>
 		</div>
-		<FullBlanket data={value}/>
+		{#key value}
+			<FullBlanket data={value}/>
+		{/key}
+
 		{:else if block.type === 'footer'}
 		<Footer>
 			<div slot="about">

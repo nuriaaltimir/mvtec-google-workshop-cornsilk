@@ -7,12 +7,12 @@
     // const selectedTopics = uniqify(data, 'name').map( d => d.name)
     // console.log(selectedTopics[0])
     // console.log(data.filter( d=>d.name === selectedTopics[0]))
-    console.log(data)
+    $: console.log(data)
 </script>
 
 <div class=full>
     {#each repetition as i}
         <!-- {t} -->
-        <Blanket data={data[i]['value']}/>
+        <Blanket data={data[i]}/>
     {/each}
 </div>
