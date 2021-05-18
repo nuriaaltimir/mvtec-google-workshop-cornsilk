@@ -7,7 +7,7 @@
     // const selectedTopics = uniqify(data, 'name').map( d => d.name)
     // console.log(selectedTopics[0])
     // console.log(data.filter( d=>d.name === selectedTopics[0]))
-
+    console.log(data)
 </script>
 
 <div class=full>

@@ -54,9 +54,21 @@
         innerObj['value'] = selected.filter( d=>d.name === selectedTopics[i])
         dataNew.push(innerObj)         
 	}
-	console.log(dataNew)
+
+	// function structuring(v){
+	// 	var i;
+	// 	let dataNew2 = [];
+	// 	for (i = 0; i < v.length; i++) {
+	// 		var innerObj = {};
+	// 		innerObj['name'] = v[i][0]['name']
+	// 		innerObj['value'] = v[i]
+	// 		dataNew.push(innerObj)         
+	// 	}
+	// 	return dataNew2
+	// }
 	
 	$:console.log(value)
+	// $:console.log(structuring(value))
 
 </script>
 
@@ -80,7 +92,7 @@
 			<Select activeClass="gray" bind:value chips multiple outlined items={dataNew}>Pick a topic</Select>
 		</MaterialApp>
 		</div>
-		<FullBlanket data={dataNew}/>
+		<FullBlanket data={value}/>
 		{:else if block.type === 'footer'}
 		<Footer>
 			<div slot="about">
