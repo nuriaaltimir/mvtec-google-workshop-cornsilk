@@ -15,7 +15,6 @@
 	  let width, height;
     let frame;
 
-
     let dataMap = data.reduce((acc,d) => {
       acc[d.cy - 1] = acc[d.cy - 1] ?? [];
       acc[d.cy - 1][d.cx - 1] = d;
@@ -28,23 +27,26 @@
 
     $: x = scaleLinear()
 		.domain(extent(data, d => d.cx))
-		.range([margin.left + 10, width - margin.right - margin.right]);
+		.range([margin.left + 5 , width - margin.right - margin.right]);
 
     $: stepX = (x.range()[1] - x.range()[0]) / dataMap[0].length;
     $: stepY = (y.range()[1] - y.range()[0]) / dataMap.length;
 
-	  $: y = scaleLinear()
+	$: y = scaleLinear()
 		  .domain(extent(data, d => d.cy))
-      .range([margin.top + 15, height - margin.bottom - margin.top ]);
+          .range([margin.top + 5, height - margin.bottom - margin.top ]);
 
     $: rx = scaleSqrt()
-		.domain(extent(data, d => d.rminor))
+        .domain([0,10.61032953945969]) //max rminor
+        // .domain(extent(data, d => d.rminor))
+        // .domain([0, d3.max(data, )])
 		.range([0, 6])
         .nice();
 
     $: ry = scaleSqrt()
-		.domain(extent(data, d => d.rmajor))
-		.range([0, 15])
+        .domain([0,10.61032953945969]) // max rmajor
+		// .domain(extent(data, d => d.rmajor))
+		.range([0, 10])
 		.nice();
 
     function  getMousePos(canvas, evt) {
@@ -63,8 +65,7 @@
       const item = dataMap[row][col];
       tooltipTip = `
        rmajor: ${item.rmajor} |  rminor: ${item.rminor}
-
-      rmajorR: ${item.rmajorR} | rminorR: ${item.rminorR}
+       rmajorR: ${item.rmajorR} | rminorR: ${item.rminorR}
 
         <b>${item.name === 'Beirut' ? 'Crisis' : item.name}</b>
         <br/>

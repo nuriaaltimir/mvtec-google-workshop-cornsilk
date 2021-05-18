@@ -18,7 +18,6 @@
         cx:d.month, // time in months
         // cy:d.index, // subjects ordered
         cy: Math.ceil(d.cx/12), // subjects ordered
-        ////building the oval so that the value is the area
         rmajor: d.rmajor, 
         rminor: d.rminor,
         rmajorR: d.rmajorR, 
@@ -31,39 +30,34 @@
 		month: d.month        
         };}
 		);
-	let selected = oval_data2.filter(d => d.type === "MH")
-	// let types = [...new Set(oval_data2.map((d) => d.name))];
+	
+	let value = [];
+	let types = [...new Set(oval_data2.map((d) => d.name))];
+	let selected = oval_data2.filter(d => types.includes(d.name))
+
+
+	console.log('compute min max for blanket data---------')
+	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[0].rminor)
+	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[oval_data2.length-1].rminor)
+	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[0].rminorR)
+	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[oval_data2.length-1].rminorR)
 
 	// blanket data transform
-	// console.log(selected)
 	const uniqify = (array, key) => array.reduce((prev, curr) => prev.find(a => a[key] === curr[key]) ? prev : prev.push(curr) && prev, []);
     const selectedTopics = uniqify(selected, 'name').map( d => d.name)
   
-	
 	var i;
     let dataNew = [];
     for (i = 0; i < selectedTopics.length; i++) {
 		var innerObj = {};
 		innerObj['name'] = selectedTopics[i]
-        innerObj['values'] = selected.filter( d=>d.name === selectedTopics[i])
+        innerObj['value'] = selected.filter( d=>d.name === selectedTopics[i])
         dataNew.push(innerObj)         
-    }
-	// console.log(dataNew[0]['values']);
-	console.log(selected.filter(d=>d.name === "Addiction"))
-	// blanket data check
-
-	console.log("==========")
-	console.log(oval_data)
-	console.log(oval_data2)
-
-	// FROM REMOTE
-	// export let oval_data2;
-	let value = [];
-
-	// $: selected = oval_data2.filter(d => d.name === "Depression");
-
-	const types = [...new Set(oval_data2.map((d) => d.name))];
+	}
+	console.log(dataNew)
+	
 	$:console.log(value)
+
 </script>
 
 <main>
@@ -83,7 +77,7 @@
 		</div>	
 		<div class='col-text select'>
 		<MaterialApp>
-			<Select activeClass="gray" bind:value chips multiple outlined items={types}>Pick a topic</Select>
+			<Select activeClass="gray" bind:value chips multiple outlined items={dataNew}>Pick a topic</Select>
 		</MaterialApp>
 		</div>
 		<FullBlanket data={dataNew}/>
