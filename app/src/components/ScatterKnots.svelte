@@ -11,7 +11,7 @@
     import Grid from './Grid.svelte'
 
     export let data;
-    let margin = {top: 20, right: 10, bottom: 20, left: 125};
+    let margin = {top: 30, right: 10, bottom: 20, left: 125};
 	  let width, height;
     let frame;
 
@@ -22,13 +22,19 @@
       return acc;
     }, [])
 
+    $: strokeHover = "black";
+    $: strWidth = 0;
+
+
+
+
     $: tooltipPosition = [-1,-1];
     $: tooltipTip = null;
     $: tooltipVisible = false;
 
     $: x = scaleLinear()
 		.domain(extent(data, d => d.cx))
-		.range([margin.left + 10, width - margin.right - margin.right]);
+		.range([margin.left + 30, width - margin.right - margin.right -20]);
 
     $: stepX = (x.range()[1] - x.range()[0]) / dataMap[0].length;
     $: stepY = (y.range()[1] - y.range()[0]) / dataMap.length;
@@ -39,12 +45,12 @@
 
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
-		.range([0, 6])
-        .nice();
+		.range([0, width*0.0035])
+    .nice();
 
     $: ry = scaleSqrt()
 		.domain(extent(data, d => d.rmajor))
-		.range([0, 15])
+		.range([0, width*0.008])
 		.nice();
 
     function  getMousePos(canvas, evt) {
@@ -89,6 +95,7 @@
   	}
     // LET'S USE THIS LATER TO IMPROVE THE PERFORMANCE
     function handleMouseenter() {
+      strokeHover = "white"
       // console.log('ENTER');
       // console.log('width', width)
       // console.log('range', x.range())
@@ -105,13 +112,16 @@
       //console.log('LEAVE');
       tooltipVisible = false;
       // cancelAnimationFrame(frame);
+      strokeHover = "black"
     }
+
+    
 
 </script>
 <div class='graphic overview' bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas {width} {height} on:mousemove={handleMousemove} on:mouseenter={handleMouseenter} on:mouseleave={handleMouseleave}>
-        <Grid type="x" scale={x} {data} {margin} />
-        <Grid type="y" scale={y} {data} {margin} />
+        <Grid type="x" scale={x} {data} {margin}/>
+        <Grid type="y" scale={y} {data} {margin}/>
             {#each data as d,i}
             {#if i%2}
             <Ellipse
@@ -120,8 +130,10 @@
                 i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill='#F26680'
+                fill='#f02b50'
                 rotation={Math.PI * .75}
+                strokeColor={strokeHover}
+                strokeWidth={strWidth}
             />
             <Ellipse
                 x={x(d.cx)}
@@ -129,8 +141,10 @@
                 i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill='#13B2ED'
+                fill='#66AAD3'
                 rotation={Math.PI * .25}
+                strokeColor={strokeHover}
+                strokeWidth={strWidth}
             />
             {:else}
             <Ellipse
@@ -139,8 +153,10 @@
                 i={d.cy}
                 rx={rx(d.rminorR)}
                 ry={ry(d.rmajorR)}
-                fill='#F24968'
+                fill='#f02b50'
                 rotation={Math.PI * .75}
+                strokeColor={strokeHover}
+                strokeWidth={strWidth}
             />
             <Ellipse
                 x={x(d.cx)}
@@ -148,8 +164,10 @@
                 i={d.cy}
                 rx={rx(d.rminor)}
                 ry={ry(d.rmajor)}
-                fill='#18C2E6'
+                fill='#66AAD3'
                 rotation={Math.PI * .25}
+                strokeColor={strokeHover}
+                strokeWidth={strWidth}
             />
             {/if}
             {/each}
@@ -157,8 +175,6 @@
     <Tooltip x={tooltipPosition[0] * stepX} y={stepY * tooltipPosition[1]} tooltipWidth={200} width={width} tip={tooltipTip} visible={tooltipVisible}/>
 </div>
 <style>
-    .overview {
-        height: 60vw;
-    }
+
 
 </style>

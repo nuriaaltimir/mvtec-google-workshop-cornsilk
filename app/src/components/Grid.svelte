@@ -9,6 +9,7 @@
 	
 	$: render = ({ context, width, height }) => {
 		context.beginPath();
+
 		
     data.forEach(d => {
 			if (type === "x") {
@@ -16,22 +17,30 @@
 				context.moveTo(scale(d.cx),margin.bottom);
 				context.lineTo(scale(d.cx), height - margin.bottom + tickSize);
                 context.strokeStyle = "lightgrey";
-                context.lineWidth = 2;
+                context.lineWidth = 3;
                 context.stroke();
+
+
 			} else if (type === "y") {
                 context.beginPath();
 				context.moveTo(width, scale(d.cy) - 1.5 );
 				context.lineTo(margin.left - tickSize, scale(d.cy) - 1.5);
                 context.strokeStyle = "#26B0E6";
-                context.lineWidth = 2;
+                context.lineWidth = 1;
                 context.stroke();
 
                 context.beginPath();
                 context.moveTo(width, scale(d.cy) + 1.5);
 				context.lineTo(margin.left - tickSize, scale(d.cy)+ 1.5);
                 context.strokeStyle = "#F16680";
-                context.lineWidth = 2;
+                context.lineWidth = 1;
                 context.stroke();
+
+               //context.beginPath();
+                //context.moveTo(width, 0);
+               // context.lineTo(margin.left,  0);
+                //context.strokeStyle = "lightgrey";
+                //context.stroke();
 
 			}
     });
@@ -43,11 +52,14 @@
 			if (type === "x") {
 			} else if (type === "y") {
                 context.font="0.9em Roboto";
+			    context.fillText("2015", scale(9.65),8);
+                context.fillText("2021", scale(69.8),8);
+
                 if (d.cy === 33) {
                     context.fillText("Crisis", margin.left - tickSize - 1, scale(d.cy));
                 context.fillStyle = "rgba(189, 189, 189)";  
                 } else {
-				context.fillText(d.lable, margin.left - tickSize - 1, scale(d.cy));
+				context.fillText(d.lable, margin.left - tickSize - 5, scale(d.cy));
                 context.fillStyle = "rgba(189, 189, 189)";
                 }
 
