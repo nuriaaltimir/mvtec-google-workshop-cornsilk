@@ -12,7 +12,7 @@
         height:2.4rem;
         border-radius: 1.2rem;
         border:3px solid #FFF;
-        box-shadow: 0 0 1rem #00000044;
+        box-shadow: 0 0 1.5rem #00000055;
         pointer-events: none;
         margin-left:-1.2rem;
         margin-top:-1.2rem;
