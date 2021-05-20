@@ -19,9 +19,6 @@
     
 </section>
 <style>
-  .kicker {
-    font-weight: 700 !important;
-  }
   .legend {
     position: relative;
     height: 100px;

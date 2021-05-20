@@ -42,12 +42,12 @@
 
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
-		.range([0, width*0.0035])
+		.range([0, width*0.007])
     .nice();
 
     $: ry = scaleSqrt()
 		.domain(extent(data, d => d.rmajor))
-		.range([0, width*0.008])
+		.range([0, width*0.015])
 		.nice();
 
     function  getMousePos(canvas, evt) {

@@ -2,6 +2,7 @@
 	import Menu from './components/common/Menu.svelte'
 	import Header from './components/Header.svelte'
 	import ScatterKnots from './components/ScatterKnots.svelte'
+	import ScatterKnots_Mobile from './components/ScatterKnots_Mobile.svelte'
 	import Text from './components/Text.svelte'
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
@@ -12,6 +13,8 @@
 	export let content;
 	export let oval_data;
 	export let oval_data2;
+	export let oval_dataMbl;
+
 
 	oval_data2 = oval_data.map(d => {return {
         // cx:d.order, // time in months
@@ -68,7 +71,12 @@
 		{#if block.type === 'head'}
 		<Header {...block}/>
 		{:else if block.type === 'overview'}
-		<ScatterKnots {...block} data={oval_data}/>
+		<div class="desktopChart">
+			<ScatterKnots {...block} data={oval_data}/>
+		</div>
+		<div class="MobileChart">
+			<ScatterKnots_Mobile {...block} data={oval_dataMbl}/>
+		</div>
 		{:else if block.type === 'text'}
 		<Text {...block} />
 		{:else if block.type === 'chart'}
