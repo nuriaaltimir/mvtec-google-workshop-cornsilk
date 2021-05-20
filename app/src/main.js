@@ -2,7 +2,7 @@ import App from './App.svelte';
 import story from './data/story.json'
 import OvalData from './data/OvalData.json'
 import OvalData2 from './data/OvalData2.json' // blanket
-import ovalDataMbl from './data/OvalDataMbl.json' // mobile
+import OvalDataMbl from './data/OvalDataMbl.json' // mobile
 
 
 const app = new App({
@@ -10,7 +10,7 @@ const app = new App({
     props:{
         content:story.article,
         oval_data:OvalData,
-        oval_dataMbl:ovalDataMbl
+        oval_dataMbl:OvalDataMbl
     } 
 })
 

@@ -8,7 +8,8 @@
   import { format } from 'd3-format';
   import { timeFormat } from 'd3-time-format';
 	import {extent} from 'd3-array';
-    import Grid from './Grid.svelte'
+  import Grid from './Grid.svelte'
+  import Focus from './Focus.svelte'
 
     export let data;
     let margin = {top: 30, right: 10, bottom: 20, left: 125};
@@ -22,10 +23,7 @@
       return acc;
     }, [])
 
-
-
-    $:  strokeHover = "white";
-    $:  strWidth = 0;
+    let index;
 
     $: tooltipPosition = [-1,-1];
     $: tooltipTip = null;
@@ -35,8 +33,8 @@
 		.domain(extent(data, d => d.cx))
 		.range([margin.left + 30, width - margin.right - margin.right -20]);
 
-    $: stepX = (x.range()[1] - x.range()[0]) / dataMap[0].length;
-    $: stepY = (y.range()[1] - y.range()[0]) / dataMap.length;
+    $: stepX = (x.range()[1] - x.range()[0]) / (dataMap[0].length - 1);
+    $: stepY = (y.range()[1] - y.range()[0]) / (dataMap.length - 1);
 
 	  $: y = scaleLinear()
 		  .domain(extent(data, d => d.cy))
@@ -44,18 +42,18 @@
 
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
-		.range([0, width*0.0035])
+		.range([0, width*0.007])
     .nice();
 
     $: ry = scaleSqrt()
 		.domain(extent(data, d => d.rmajor))
-		.range([0, width*0.008])
+		.range([0, width*0.015])
 		.nice();
 
     function  getMousePos(canvas, evt) {
       var rect = canvas.getBoundingClientRect(), // abs. size of element
-          scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X
-          scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
+      scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X
+      scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
 
       return {
         x: (evt.clientX - rect.left),   // scale mouse coordinates after they have
@@ -66,6 +64,7 @@
     function updateTooltip(col, row) {
       tooltipPosition = [col, row];
       const item = dataMap[row][col];
+      index = data.indexOf(item);
       tooltipTip = `
         <b>${item.lable === 'Beirut' ? 'Crisis' : item.lable}</b>
         <br/>
@@ -123,7 +122,6 @@
         <Grid type="x" scale={x} {data} {margin}/>
         <Grid type="y" scale={y} {data} {margin}/>
             {#each data as d,i}
-            {#if i%2}
             <Ellipse
                 x={x(d.cx)}
                 y={y(d.cy)}
@@ -132,8 +130,6 @@
                 ry={ry(d.rmajorR)}
                 fill='#f02b50'
                 rotation={Math.PI * .75}
-                strokeColor={strokeHover}
-                strokeWidth={strWidth}
             />
             <Ellipse
                 x={x(d.cx)}
@@ -143,36 +139,11 @@
                 ry={ry(d.rmajor)}
                 fill='#66AAD3'
                 rotation={Math.PI * .25}
-                strokeColor={strokeHover}
-                strokeWidth={strWidth}
             />
-            {:else}
-            <Ellipse
-                x={x(d.cx)}
-                y={y(d.cy)}
-                i={d.cy}
-                rx={rx(d.rminorR)}
-                ry={ry(d.rmajorR)}
-                fill='#f02b50'
-                rotation={Math.PI * .75}
-                strokeColor={strokeHover}
-                strokeWidth={strWidth}
-            />
-            <Ellipse
-                x={x(d.cx)}
-                y={y(d.cy)}
-                i={d.cy}
-                rx={rx(d.rminor)}
-                ry={ry(d.rmajor)}
-                fill='#66AAD3'
-                rotation={Math.PI * .25}
-                strokeColor={strokeHover}
-                strokeWidth={strWidth}
-            />
-            {/if}
             {/each}
     </Canvas>
     <Tooltip x={tooltipPosition[0] * stepX} y={stepY * tooltipPosition[1]} tooltipWidth={200} width={width} tip={tooltipTip} visible={tooltipVisible}/>
+    <Focus x={tooltipPosition[0] * stepX + margin.left + 30} y={tooltipPosition[1] * stepY + margin.top + 15} />
 </div>
 <style>
 

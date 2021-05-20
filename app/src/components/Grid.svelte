@@ -53,7 +53,7 @@
 			} else if (type === "y") {
                 context.font="0.9em Roboto";
 			    context.fillText("2015", scale(9.65),8);
-                context.fillText("2021", scale(69.8),8);
+                context.fillText("2021", scale(72),8);
 
                 if (d.cy === 33) {
                     context.fillText("Crisis", margin.left - tickSize - 5, scale(d.cy));
