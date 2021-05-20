@@ -1,1 +1,112 @@
-{"article":[{"type":"head","kicker":"HELP!","head":"The safety net around us","subhead":"Weaving a strong social fabric through difficult times"},{"type":"overview"},{"type":"text","text":[{"p":"We often resort to Google Search to find out all kinds of information. And not only trivial, also about how to handle our struggles. Is there anyone ready to help?"},{"p":"We used Google Trends to obtain the time series of searches about offering help and needing help, roughly equivalent to  “I want to help with this”  and “I am struggling with this”. When comparing the two, we see how thick is the fabric of solidarity and how much of the needs it covers."}]},{"type":"text","text":[{"p":"Mental illnesses are the most searched group of topics in Google across the years. Depression is the lead in Google Trends since 2015, and it has had a stable behaviour since then. By far, it's the most searched topic, with an intensity of search of 72% on average. For depression, people not only look for help (pink ellipse), but more people offer their help (an average of 80%, blue ellipse)."}]},{"type":"knit","query":""},{"type":"blanket"},{"type":"text","text":[{"p":"A similar thing happens with cancer: many people look for help, but for this topic, the offer is fewer (an average of 82.2% of search compared to 55.4% of the offer)."}]},{"type":"knit","query":""},{"type":"blanket"},{"type":"text","text":[{"p":"Last year, the Covid-19 hit the world. Some slight searches for help started in March, but the highest took place in December. The offer for help had the opposite behaviour: reached the maximum (100%) in March and, since then, it decreased."}]},{"type":"knit","query":""},{"type":"blanket"},{"type":"text","text":[{"p":"Apart from illnesses, there are some peaks of offers (and search for help) when a tragedy arrives. That's the case of Australian fires, floods or wars, like Yemen, Aleppo or Palestine."}]},{"type":"knit","query":""},{"type":"blanket"},{"type":"text","text":[{"p":"In 2015 Europe lived the biggest crisis of refugees from Syria, and data shows that event: a peak of offers for help occurred that autumn. But afterwards, the word 'refugees' only appears as a need for help, with a bare offer response."}]},{"type":"knit","query":""},{"type":"blanket"},{"type":"footer","about":[{"p":"How we did it: The data was retrieved from Google Trends data pool of searches done in English from January 2015 to April 2021. First we looked for solidarity items and then mirror the searches for struggle. Every time series is weighted between 0 and 100 within itself."}],"data":[{"p":"How we did it: The data was retrieved from Google Trends data pool of searches done in English from January 2015 to April 2021. First we looked for solidarity items and then mirror the searches for struggle. Every time series is weighted between 0 and 100 within itself."}]}]}
+{
+    "article": [
+        {
+            "type": "head",
+            "kicker": "HELP!",
+            "head": "",
+            "subhead": "Weaving a strong social fabric through difficult times"
+        },
+        {
+            "type": "overview"
+        },
+        {
+            "type": "text",
+            "text": [
+                {
+                    "p": "We often resort to Google Search to find out all kinds of information. And not only trivial, also about how to handle our struggles. Is there anyone ready to help?"
+                },
+                {
+                    "p": "We used Google Trends to obtain the time series of searches about offering help and needing help, roughly equivalent to  “I want to help with this”  and “I am struggling with this”. When comparing the two, we see how thick is the fabric of solidarity and how much of the needs it covers."
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "text": [
+                {
+                    "p": "Mental illnesses are the most searched group of topics in Google across the years. Depression is the lead in Google Trends since 2015, and it has had a stable behaviour since then. By far, it's the most searched topic, with an intensity of search of 72% on average. For depression, people not only look for help (pink ellipse), but more people offer their help (an average of 80%, blue ellipse)."
+                }
+            ]
+        },
+        {
+            "type": "knit",
+            "query": ""
+        },
+        {
+            "type": "blanket"
+        },
+        {
+            "type": "text",
+            "text": [
+                {
+                    "p": "A similar thing happens with cancer: many people look for help, but for this topic, the offer is fewer (an average of 82.2% of search compared to 55.4% of the offer)."
+                }
+            ]
+        },
+        {
+            "type": "knit",
+            "query": ""
+        },
+        {
+            "type": "blanket"
+        },
+        {
+            "type": "text",
+            "text": [
+                {
+                    "p": "Last year, the Covid-19 hit the world. Some slight searches for help started in March, but the highest took place in December. The offer for help had the opposite behaviour: reached the maximum (100%) in March and, since then, it decreased."
+                }
+            ]
+        },
+        {
+            "type": "knit",
+            "query": ""
+        },
+        {
+            "type": "blanket"
+        },
+        {
+            "type": "text",
+            "text": [
+                {
+                    "p": "Apart from illnesses, there are some peaks of offers (and search for help) when a tragedy arrives. That's the case of Australian fires, floods or wars, like Yemen, Aleppo or Palestine."
+                }
+            ]
+        },
+        {
+            "type": "knit",
+            "query": ""
+        },
+        {
+            "type": "blanket"
+        },
+        {
+            "type": "text",
+            "text": [
+                {
+                    "p": "In 2015 Europe lived the biggest crisis of refugees from Syria, and data shows that event: a peak of offers for help occurred that autumn. But afterwards, the word 'refugees' only appears as a need for help, with a bare offer response."
+                }
+            ]
+        },
+        {
+            "type": "knit",
+            "query": ""
+        },
+        {
+            "type": "blanket"
+        },
+        {
+            "type": "footer",
+            "about": [
+                {
+                    "p": "How we did it: The data was retrieved from Google Trends data pool of searches done in English from January 2015 to April 2021. First we looked for solidarity items and then mirror the searches for struggle. Every time series is weighted between 0 and 100 within itself."
+                }
+            ],
+            "data": [
+                {
+                    "p": "How we did it: The data was retrieved from Google Trends data pool of searches done in English from January 2015 to April 2021. First we looked for solidarity items and then mirror the searches for struggle. Every time series is weighted between 0 and 100 within itself."
+                }
+            ]
+        }
+    ]
+}
