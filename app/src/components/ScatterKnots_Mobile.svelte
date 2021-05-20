@@ -22,9 +22,10 @@
       return acc;
     }, [])
 
-    $: strokeHover = "white";
-    $: strWidth = 0;
 
+
+    $:  strokeHover = "white";
+    $:  strWidth = 0;
 
     $: tooltipPosition = [-1,-1];
     $: tooltipTip = null;

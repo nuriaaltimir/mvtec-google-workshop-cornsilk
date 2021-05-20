@@ -2,6 +2,7 @@
 	import Menu from './components/common/Menu.svelte'
 	import Header from './components/Header.svelte'
 	import ScatterKnots from './components/ScatterKnots.svelte'
+	import ScatterKnots_Mobile from './components/ScatterKnots_Mobile.svelte'
 	import Text from './components/Text.svelte'
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
@@ -78,7 +79,8 @@
 		{#if block.type === 'head'}
 		<Header {...block}/>
 		{:else if block.type === 'overview'}
-		<ScatterKnots {...block} data={oval_data}/>
+		<div class="chart1">
+		<ScatterKnots {...block} data={oval_data}/></div>
 		{:else if block.type === 'text'}
 		<Text {...block} />
 		{:else if block.type === 'chart'}

@@ -29,6 +29,11 @@
 			//context.strokeStyle = stroke;
 			//context.stroke();
 
+			context.globalAlpha = 0.6;
+			context.strokeStyle = "black";
+			context.lineWidth = 1;
+			context.stroke();
+
 			
 		} else {
 			context.strokeStyle = fill;
@@ -38,17 +43,16 @@
 			context.globalAlpha = 0.8;
 			//context.globalCompositeOperation = 'multiply';
 			context.fill();
-		
+
+			context.globalAlpha = 0.6;
+			context.strokeStyle = "black";
+			context.lineWidth = 1;
+			context.stroke();
+			
 
 		}	
 
-		// context.strokeStyle = fill;
-		// context.lineWidth = 2.4;
-		// context.beginPath();
-		// context.ellipse(x, y + last, rx * last/10, ry * last/10, rotation, 0, Math.PI * 2);
-		// context.globalAlpha = 0.6;
-		// context.globalCompositeOperation = 'soft-light';
-		// context.stroke();
+		
 	}
 
 </script>
