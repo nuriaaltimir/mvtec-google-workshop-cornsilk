@@ -56,7 +56,7 @@
                 context.fillText("2021", scale(69.8),8);
 
                 if (d.cy === 33) {
-                    context.fillText("Crisis", margin.left - tickSize - 1, scale(d.cy));
+                    context.fillText("Crisis", margin.left - tickSize - 5, scale(d.cy));
                 context.fillStyle = "rgba(189, 189, 189)";  
                 } else {
 				context.fillText(d.lable, margin.left - tickSize - 5, scale(d.cy));

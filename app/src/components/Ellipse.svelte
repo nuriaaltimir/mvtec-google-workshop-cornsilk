@@ -8,17 +8,12 @@
 	export let rx = 1;
     export let ry = 1;
 	export let fill = 'black';
-
+	export let picked = false;
 
     export let rotation = Math.PI;
-
-
-
-
-	let last = 20
 	
 	$: render = ({ context }) => {
-		if (i < 33) {
+
 			context.fillStyle = fill;
 			context.beginPath();
 			context.ellipse(x, y, rx, ry, rotation, 0, Math.PI * 2);
@@ -27,32 +22,7 @@
 			context.fill();
 			//context.lineWidth = strokeWidth;
 			//context.strokeStyle = stroke;
-			//context.stroke();
-
-			context.globalAlpha = 0.6;
-			context.strokeStyle = "black";
-			context.lineWidth = 1;
-			context.stroke();
-
-			
-		} else {
-			context.strokeStyle = fill;
-			context.lineWidth = 2.4;
-			context.beginPath();
-			context.ellipse(x, y, rx, ry, rotation, 0, Math.PI * 2);
-			context.globalAlpha = 0.8;
-			//context.globalCompositeOperation = 'multiply';
-			context.fill();
-
-			context.globalAlpha = 0.6;
-			context.strokeStyle = "black";
-			context.lineWidth = 1;
-			context.stroke();
-			
-
-		}	
-
-		
+			//context.stroke();	
 	}
 
 </script>
