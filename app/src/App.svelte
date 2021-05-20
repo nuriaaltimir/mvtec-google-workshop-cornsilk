@@ -13,6 +13,8 @@
 	export let content;
 	export let oval_data;
 	export let oval_data2;
+	export let oval_dataMbl;
+
 
 	oval_data2 = oval_data.map(d => {return {
         // cx:d.order, // time in months
@@ -79,8 +81,12 @@
 		{#if block.type === 'head'}
 		<Header {...block}/>
 		{:else if block.type === 'overview'}
-		<div class="chart1">
-		<ScatterKnots {...block} data={oval_data}/></div>
+		<div class="desktopChart">
+			<ScatterKnots {...block} data={oval_data}/>
+		</div>
+		<div class="MobileChart">
+			<ScatterKnots_Mobile {...block} data={oval_dataMbl}/>
+		</div>
 		{:else if block.type === 'text'}
 		<Text {...block} />
 		{:else if block.type === 'chart'}

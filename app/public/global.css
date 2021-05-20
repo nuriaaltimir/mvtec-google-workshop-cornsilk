@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
 html, body {
 	position: relative;
@@ -11,25 +11,27 @@ html, body {
 }
 body {
 	color: #000;
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	box-sizing: border-box;
 	font-style: normal;
 }
 
-h1, h2, h3 { font-family: 'Roboto', sans-serif; }
+h1, h2, h3 { font-family: 'Bitter', 'Roboto', sans-serif !important; }
 
 h1 {
 	font-weight: 200;
-	font-size: 3rem !important;
+	font-size: 2rem !important;
 	line-height: 1.15;
 }
 h1, h2 {
-	margin-bottom: 2rem;
-}
-h2, h3, h4, p { line-height: 1.5; }
-h2, h3 { font-weight: 500; }
-h2 { font-size: 2.2rem !important; }
+	margin-bottom: 1rem;
+	font-weight: 400 !important;
+	font-size: 3em !important;
+	font-family: 'Bitter', 'Roboto', sans-serif}
+h3, h4, p { line-height: 1.5; }
+h3 { font-weight: 500; }
+h2 { font-size: 2.2rem !important; margin-bottom: 4rem;}
 h3 { font-size: 1.6rem !important; }
 h4 {
 	font-family: 'Roboto', sans-serif;
@@ -63,6 +65,10 @@ a:hover {
 	fill: #767676;
 	font-family: 'Roboto', sans-serif;
 }
+.kicker {
+	font-family: 'Bitter', sans-serif;
+	font-weight: 100;
+}
 .value {
 	color: #333;
 	fill: #333;
@@ -76,6 +82,8 @@ a:hover {
 	margin-bottom:3rem;
 	width: 90%;
 	margin: 0 auto;
+
+
 }
 
 
@@ -135,10 +143,13 @@ menu {
 	width: 70%;
 	margin: 0 auto;
 }
+.MobileChart {
+	display: none;
+  }
 
 @media screen and (min-width: 40rem) {
-	h1 { font-size: 5.4rem !important; }
-	h2 { font-size: 2.7rem !important; }
+	h1 {font-size: 5rem !important; line-height: 5.5rem !important;}
+	h2 { font-size: 2rem !important; line-height: 2.2rem !important; }
 
 	menu {
 		padding:0;
@@ -168,3 +179,16 @@ menu {
 	color: #F24968;
 	font-weight: 700;
 }
+
+@media (max-width: 650px) {
+	.desktopChart {
+	  display: none;
+	}
+	.MobileChart {
+		width: 100%;
+		margin: 0 auto;
+		display:block;
+	  }
+  }
+
+  
