@@ -26,7 +26,7 @@ h1 {
 }
 h1, h2 {
 	margin-bottom: 1rem;
-	font-weight: 400 !important;
+	font-weight: 200 !important;
 	font-size: 3em !important;
 	font-family: 'Bitter', 'Roboto', sans-serif}
 h3, h4, p { line-height: 1.5; }
@@ -67,7 +67,7 @@ a:hover {
 }
 .kicker {
 	font-family: 'Bitter', sans-serif;
-	font-weight: 100;
+	font-weight: 500;
 }
 .value {
 	color: #333;
