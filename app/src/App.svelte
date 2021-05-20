@@ -34,23 +34,13 @@
         };}
 		);
 	
-	//let types = [...new Set(oval_data2.map((d) => d.name))];
-	//let value = types;
-	//let selected = oval_data2.filter(d => types.includes(d.name))
-
-
 	console.log('compute min max for blanket data---------')
 	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[0].rminor)
 	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[oval_data2.length-1].rminor)
 	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[0].rminorR)
 	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[oval_data2.length-1].rminorR)
 
-	// blanket data transform
-	//const uniqify = (array, key) => array.reduce((prev, curr) => prev.find(a => a[key] === curr[key]) ? prev : prev.push(curr) && prev, []);
-    //const selectedTopics = uniqify(selected, 'name').map( d => d.name)
-
 	let topics = [...new Set(oval_data2.map((d) => d.name))];
-
 	var i;
     let dataNew = [];
     for (i = 0; i < topics.length; i++) {
