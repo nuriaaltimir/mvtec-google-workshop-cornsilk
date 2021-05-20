@@ -20,7 +20,7 @@
     <div class='legend_mobile'>
       <p style='top:-10%; left: 0; width:60%; line-height: 20px;' class='label'>This thread is people <span class='text-blue'>in need of help</span> ...</p>
       <p style='top:46%; left: 0; width:70%' class='label'>... and this one is <br><span class='text-red'>people seeking to <br>help someone</span> <br>on Google, over time.</p>
-      <p style='top:46%; left: 65%; width:50%' class='label'>Where <span class='text-black'>they meet in a big knot</span>, people are asking for help and offering it at the same month for the same issue</p>
+      <p style='top:46%; left: 65%; width:50%' class='label'>Where <span class='text-black'>they meet in a big knot</span>, people are asking for help and offering it at the same quarter for the same issue</p>
       <LegendMobile/></div>
     
 </section>

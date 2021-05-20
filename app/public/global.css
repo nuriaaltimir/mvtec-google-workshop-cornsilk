@@ -144,7 +144,7 @@ menu {
 .legend {
 	width: 70%;
 	margin: 0 auto;
-	margin-top: 1vh;
+	margin-top: 5vh !important;
 }
 
 .legend_mobile {
