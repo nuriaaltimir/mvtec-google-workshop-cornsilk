@@ -66,15 +66,12 @@
       const item = dataMap[row][col];
       index = data.indexOf(item);
       tooltipTip = `
-        <b>${item.lable === 'Beirut' ? 'Crisis' : item.lable}</b>
+        On <b>${item.term} quarter of ${item.year}</b>
+          there was an index of <span class="requested">${format(',.2~f')(item.value)}</span> 
+          searches asking for help for and <span class="offered">${format(',.2~f')(item.value2)}</span> 
+          offering it related to <b>${item.lable === 'Beirut' ? 'Crisis' : item.lable}</b>
         <br/>
-        ${timeFormat('%B %Y')(new Date(item.year, item.month - 1, 1))}
-        <br/><br/>
-        <b>Help</b>
-        <br/>
-        Requested <span class="requested">${format(',.2~f')(item.value)}</span>
-        &harr;
-        <span class="offered">${format(',.2~f')(item.value2)}</span> Offered
+       
       `
     }
 
