@@ -25,7 +25,8 @@ h1 {
 	line-height: 1.15;
 }
 h1, h2 {
-	margin-bottom: 1rem;
+	margin-bottom: 0.25rem !important;
+	line-height: 2.5rem !important;
 	font-weight: 200 !important;
 	font-size: 3em !important;
 	font-family: 'Bitter', 'Roboto', sans-serif}
@@ -76,16 +77,6 @@ a:hover {
 	font-weight: 700;
 	font-family: 'Roboto', sans-serif;
 }
-
-.graphic {
-	height:100vh;
-	margin-bottom:3rem;
-	width: 90%;
-	margin: 0 auto;
-
-
-}
-
 
 .col, .col-text, .wide, .square {
 	margin: 0 auto;
@@ -142,7 +133,13 @@ menu {
 .legend {
 	width: 70%;
 	margin: 0 auto;
+	margin-top: 1vh;
 }
+
+.legend_mobile {
+	display: none;
+}
+
 .MobileChart {
 	display: none;
   }
@@ -187,8 +184,19 @@ menu {
 	.MobileChart {
 		width: 100%;
 		margin: 0 auto;
-		display:block;
+		display:flex;
 	  }
+	.legend {
+		display: none;
+	}
+	.legend_mobile{
+		width: 100%;
+		margin: 0 auto;
+		display:flex;
+		margin-top: 5vh !important;
+		margin-bottom: 25vh !important;
+
+	}
   }
 
   

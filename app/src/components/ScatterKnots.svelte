@@ -147,5 +147,12 @@
 </div>
 <style>
 
+.graphic {
+	height:100vh;
+	margin-bottom:3rem;
+	width: 90%;
+	margin: 0 auto;
 
+
+}
 </style>
