@@ -4,6 +4,8 @@
 	import ScatterKnots from './components/ScatterKnots.svelte'
 	import ScatterKnots_Mobile from './components/ScatterKnots_Mobile.svelte'
 	import Text from './components/Text.svelte'
+	import Texth1 from './components/Texth1.svelte'
+	import Ai2html from './components/Ai2HTML.svelte'
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
 	import Blanket from './components/Blanket.svelte'
@@ -49,9 +51,15 @@
         innerObj['value'] = oval_data2.filter( d=>d.name === topics[i])
         dataNew.push(innerObj)         
 	}
-	let value = [];
+	// let dataNew2 = [];
+    // for (i = 0; i < topics.length; i++) {
+    //     dataNew2.push(oval_data2.filter(d=>d.name === topics[i]))         
+	// }
 
-	//let value = dataNew;
+	let value = [];
+	let dataNew2 = dataNew;
+	//dataNew.push({'name': 'All topics', 'value': dataNew2})
+	// console.log(dataNew2)
 	$:console.log('value=-=============')
 	$:console.log(value)
 </script>
@@ -69,8 +77,12 @@
 		</div>
 		{:else if block.type === 'text'}
 		<Text {...block} />
+		{:else if block.type === 'texth1'}
+		<Texth1 {...block} />
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
+		{:else if block.type === 'aichart'}
+		<Ai2html file={`ai2html-output/${block.file}`}/>
 		<!-- <Blanket data={selected}/> -->
 		{:else if block.type === 'blanket'}
 		<div class = "custom-select"> 
@@ -84,6 +96,7 @@
 		{#key value}
 			<FullBlanket data={value}/>
 		{/key}
+		<!-- <FullBlanket data={dataNew}/> -->
 
 		{:else if block.type === 'footer'}
 		<Footer>

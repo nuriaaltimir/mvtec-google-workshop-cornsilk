@@ -71,7 +71,6 @@
           searches asking for help for and <span class="offered">${format(',.2~f')(item.value2)}</span> 
           offering it related to <b>${item.lable === 'Beirut' ? 'Crisis' : item.lable}</b>
         <br/>
-       
       `
     }
 

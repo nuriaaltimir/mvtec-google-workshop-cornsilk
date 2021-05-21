@@ -56,9 +56,11 @@
                 context.fillText("2021", width - margin.right - 32,8);
 
                 if (d.cy === 33) {
-                    context.fillText("Crisis", margin.left - tickSize - 5, scale(d.cy));
+                context.font="0.9em Roboto";
+                context.fillText("Crisis", margin.left - tickSize - 5, scale(d.cy));
                 context.fillStyle = "rgba(189, 189, 189)";  
                 } else {
+                context.font="0.9em Roboto";
 				context.fillText(d.lable, margin.left - tickSize - 5, scale(d.cy));
                 context.fillStyle = "rgba(189, 189, 189)";
                 }
