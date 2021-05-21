@@ -38,6 +38,16 @@
     margin:0 auto;
     margin-bottom: 5rem;
   }
+  .legend p {
+	font-size: 1.1rem;
+	font-weight: 300;
+	font-family: 'Roboto', sans-serif;
+}
+.legend_mobile p {
+	font-size: 1.1rem;
+	font-weight: 300;
+	font-family: 'Roboto', sans-serif;
+}
   .label {
     position: absolute;
   }
