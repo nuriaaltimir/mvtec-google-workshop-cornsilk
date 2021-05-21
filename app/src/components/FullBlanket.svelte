@@ -10,9 +10,18 @@
     $: console.log(data)
 </script>
 
-<div class=full>
-    {#each repetition as i}
-        <!-- {t} -->
-        <Blanket data={data[i]}/>
-    {/each}
+<div class=fullblanket-container>
+        {#each repetition as i}
+            <Blanket data={data[i]} topic={data[i][0]['name']}/>
+        {/each}
+ 
+    <!-- {#if repetition.length > 0}
+        {#each repetition as i}
+            <Blanket data={data[i]} topic={data[i][0]['name']}/>
+        {/each}
+    {:else}
+    <div>
+        Please select topics!
+    </div>
+    {/if} -->
 </div>

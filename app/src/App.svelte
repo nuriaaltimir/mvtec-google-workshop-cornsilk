@@ -34,49 +34,29 @@
         };}
 		);
 	
-	let value = [];
-	let types = [...new Set(oval_data2.map((d) => d.name))];
-	let selected = oval_data2.filter(d => types.includes(d.name))
-
-
 	console.log('compute min max for blanket data---------')
 	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[0].rminor)
 	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[oval_data2.length-1].rminor)
 	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[0].rminorR)
 	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[oval_data2.length-1].rminorR)
 
-	// blanket data transform
-	const uniqify = (array, key) => array.reduce((prev, curr) => prev.find(a => a[key] === curr[key]) ? prev : prev.push(curr) && prev, []);
-    const selectedTopics = uniqify(selected, 'name').map( d => d.name)
-  
+	let topics = [...new Set(oval_data2.map((d) => d.name))];
 	var i;
     let dataNew = [];
-    for (i = 0; i < selectedTopics.length; i++) {
+    for (i = 0; i < topics.length; i++) {
 		var innerObj = {};
-		innerObj['name'] = selectedTopics[i]
-        innerObj['value'] = selected.filter( d=>d.name === selectedTopics[i])
+		innerObj['name'] = topics[i]
+        innerObj['value'] = oval_data2.filter( d=>d.name === topics[i])
         dataNew.push(innerObj)         
 	}
+	let value = [];
 
-	// function structuring(v){
-	// 	var i;
-	// 	let dataNew2 = [];
-	// 	for (i = 0; i < v.length; i++) {
-	// 		var innerObj = {};
-	// 		innerObj['name'] = v[i][0]['name']
-	// 		innerObj['value'] = v[i]
-	// 		dataNew.push(innerObj)         
-	// 	}
-	// 	return dataNew2
-	// }
-	
+	//let value = dataNew;
+	$:console.log('value=-=============')
 	$:console.log(value)
-	// $:console.log(structuring(value))
-
 </script>
 
 <main>
-	
 	{#each content as block}
 		{#if block.type === 'head'}
 		<Header {...block}/>
@@ -99,6 +79,7 @@
 		<MaterialApp>
 			<Select activeClass="gray" bind:value chips multiple outlined items={dataNew}>Pick a topic</Select>
 		</MaterialApp>
+		
 		</div>
 		{#key value}
 			<FullBlanket data={value}/>

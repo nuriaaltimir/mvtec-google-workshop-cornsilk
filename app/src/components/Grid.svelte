@@ -15,7 +15,7 @@
 			if (type === "x") {
                 context.beginPath();
 				context.moveTo(scale(d.cx),margin.bottom);
-				context.lineTo(scale(d.cx), height - margin.bottom + tickSize);
+				context.lineTo(scale(d.cx), height - margin.bottom );
                 context.strokeStyle = "lightgrey";
                 context.lineWidth = 3;
                 context.stroke();
@@ -53,7 +53,7 @@
 			} else if (type === "y") {
                 context.font="0.9em Roboto";
 			    context.fillText("2015", scale(9.65),8);
-                context.fillText("2021", scale(72),8);
+                context.fillText("2021", width - margin.right - 32,8);
 
                 if (d.cy === 33) {
                     context.fillText("Crisis", margin.left - tickSize - 5, scale(d.cy));

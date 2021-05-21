@@ -31,23 +31,23 @@
 
     $: x = scaleLinear()
 		.domain(extent(data, d => d.cx))
-		.range([margin.left + 30, width - margin.right - margin.right -20]);
+		.range([margin.left + 7, width - margin.right - margin.right - 3]);
 
     $: stepX = (x.range()[1] - x.range()[0]) / (dataMap[0].length - 1);
     $: stepY = (y.range()[1] - y.range()[0]) / (dataMap.length - 1);
 
 	  $: y = scaleLinear()
 		  .domain(extent(data, d => d.cy))
-      .range([margin.top + 15, height - margin.bottom - margin.top ]);
+      .range([margin.top + 7, height - margin.bottom - margin.top ]);
 
     $: rx = scaleSqrt()
 		.domain(extent(data, d => d.rminor))
-		.range([0, width*0.007])
+		.range([0, 3])
     .nice();
 
     $: ry = scaleSqrt()
 		.domain(extent(data, d => d.rmajor))
-		.range([0, width*0.015])
+		.range([0, 7])
 		.nice();
 
     function  getMousePos(canvas, evt) {
@@ -66,15 +66,12 @@
       const item = dataMap[row][col];
       index = data.indexOf(item);
       tooltipTip = `
-        <b>${item.lable === 'Beirut' ? 'Crisis' : item.lable}</b>
+        On <b>${item.term} quarter of ${item.year}</b>
+          there was an index of <span class="requested">${format(',.2~f')(item.value)}</span> 
+          searches asking for help for and <span class="offered">${format(',.2~f')(item.value2)}</span> 
+          offering it related to <b>${item.lable === 'Beirut' ? 'Crisis' : item.lable}</b>
         <br/>
-        ${timeFormat('%B %Y')(new Date(item.year, item.month - 1, 1))}
-        <br/><br/>
-        <b>Help</b>
-        <br/>
-        Requested <span class="requested">${format(',.2~f')(item.value)}</span>
-        &harr;
-        <span class="offered">${format(',.2~f')(item.value2)}</span> Offered
+       
       `
     }
 
@@ -146,6 +143,13 @@
     <Focus x={tooltipPosition[0] * stepX + margin.left + 30} y={tooltipPosition[1] * stepY + margin.top + 15} />
 </div>
 <style>
+.graphic {
+	height:100vh;
+	margin-bottom:3rem;
+	width: 100%;
+	margin: 0 auto;
 
+
+}
 
 </style>
