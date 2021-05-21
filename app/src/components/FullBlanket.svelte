@@ -1,6 +1,6 @@
 <script>
     import Blanket from './Blanket.svelte'
-    import BlanketAll from './BlanketAll.svelte'
+    //import BlanketAll from './BlanketAll.svelte'
 
     export let data;
     let repetition = [...Array(data.length).keys()]

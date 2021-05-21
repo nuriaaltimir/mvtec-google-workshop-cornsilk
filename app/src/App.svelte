@@ -5,7 +5,7 @@
 	import ScatterKnots_Mobile from './components/ScatterKnots_Mobile.svelte'
 	import Text from './components/Text.svelte'
 	import Texth1 from './components/Texth1.svelte'
-	import FirstChart from './components/Ai2HTML.svelte'
+	import Ai2html from './components/Ai2HTML.svelte'
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
 	import Blanket from './components/Blanket.svelte'
@@ -81,8 +81,8 @@
 		<Texth1 {...block} />
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
-		{:else if block.type === 'FirstChart'}
-		<FirstChart file="ai2html-output/graph1.html"/>
+		{:else if block.type === 'aichart'}
+		<Ai2html file={`ai2html-output/${block.file}`}/>
 		<!-- <Blanket data={selected}/> -->
 		{:else if block.type === 'blanket'}
 		<div class = "custom-select"> 
