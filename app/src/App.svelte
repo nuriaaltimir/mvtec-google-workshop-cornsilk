@@ -4,6 +4,7 @@
 	import ScatterKnots from './components/ScatterKnots.svelte'
 	import ScatterKnots_Mobile from './components/ScatterKnots_Mobile.svelte'
 	import Text from './components/Text.svelte'
+	import Texth1 from './components/Texth1.svelte'
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
 	import Blanket from './components/Blanket.svelte'
@@ -75,6 +76,8 @@
 		</div>
 		{:else if block.type === 'text'}
 		<Text {...block} />
+		{:else if block.type === 'texth1'}
+		<Texth1 {...block} />
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
 		<!-- <Blanket data={selected}/> -->
