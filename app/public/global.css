@@ -89,6 +89,7 @@ a:hover {
 	margin: 0 auto;
 	display: inline-block;
 	border: 1px solid pink;
+	margin-top: -7px;
 	/* background:
 	linear-gradient(60deg, #fafafa 23%, transparent 23%) 5px 0,
 	linear-gradient(60deg, transparent 74%, #fafafa 78%),

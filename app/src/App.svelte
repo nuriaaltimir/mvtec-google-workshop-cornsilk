@@ -51,9 +51,15 @@
         innerObj['value'] = oval_data2.filter( d=>d.name === topics[i])
         dataNew.push(innerObj)         
 	}
-	let value = [];
+	// let dataNew2 = [];
+    // for (i = 0; i < topics.length; i++) {
+    //     dataNew2.push(oval_data2.filter(d=>d.name === topics[i]))         
+	// }
 
-	//let value = dataNew;
+	let value = [];
+	let dataNew2 = dataNew;
+	//dataNew.push({'name': 'All topics', 'value': dataNew2})
+	// console.log(dataNew2)
 	$:console.log('value=-=============')
 	$:console.log(value)
 </script>
@@ -90,6 +96,7 @@
 		{#key value}
 			<FullBlanket data={value}/>
 		{/key}
+		<!-- <FullBlanket data={dataNew}/> -->
 
 		{:else if block.type === 'footer'}
 		<Footer>
