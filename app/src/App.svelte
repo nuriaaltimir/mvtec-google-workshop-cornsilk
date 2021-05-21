@@ -5,20 +5,20 @@
 	import ScatterKnots_Mobile from './components/ScatterKnots_Mobile.svelte'
 	import Text from './components/Text.svelte'
 	import Texth1 from './components/Texth1.svelte'
-	import FirstChart from './components/Ai2HTML.svelte'
+	import Ai2html from './components/Ai2HTML.svelte'
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
 	import Blanket from './components/Blanket.svelte'
+	import {groups} from 'd3-array'
 	import Footer from './components/common/Footer.svelte'
 	import { Select, MaterialApp } from 'svelte-materialify';
 
 	export let content;
 	export let oval_data;
-	export let oval_data2;
 	export let oval_dataMbl;
 
 
-	oval_data2 = oval_data.map(d => {
+	let oval_data2 = oval_data.map(d => {
 		return {
       // cx:d.order, // time in months
       cx:d.month, // time in months
@@ -92,8 +92,8 @@
 		<Texth1 {...block} />
 		{:else if block.type === 'chart'}
 		<Knit {...block} />
-		{:else if block.type === 'FirstChart'}
-		<FirstChart file="ai2html-output/graph1.html"/>
+		{:else if block.type === 'aichart'}
+		<Ai2html file={`ai2html-output/${block.file}`}/>
 		<!-- <Blanket data={selected}/> -->
 		{:else if block.type === 'blanket'}
 		<div class = "custom-select">
