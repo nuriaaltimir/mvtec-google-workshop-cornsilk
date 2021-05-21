@@ -18,8 +18,7 @@
     let margin = {top: 10, right: 10, bottom: 10, left: 10};
 	  let width, height;
     let frame;
-    console.log("data blanket-----------")
-    console.log(data)
+  
     let dataMap = data.reduce((acc,d) => {
       acc[d.cy - 1] = acc[d.cy - 1] ?? [];
       acc[d.cy - 1][d.cx - 1] = d;
@@ -43,8 +42,6 @@
 
   let responsive = ""
   $: width < 640 ? responsive=[5,8] : responsive=[6,15] // [rx, ry]
-
-  $: console.log(responsive)
 
     $: rx = scaleSqrt()
         .domain([0,10.61032953945969]) //max rminor
