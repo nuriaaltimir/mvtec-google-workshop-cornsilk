@@ -18,24 +18,25 @@
 	export let oval_dataMbl;
 
 
-	oval_data2 = oval_data.map(d => {return {
-        // cx:d.order, // time in months
-        cx:d.month, // time in months
-        // cy:d.index, // subjects ordered
-        cy: Math.ceil(d.cx/12), // subjects ordered
-        rmajor: d.rmajor, 
-        rminor: d.rminor,
-        rmajorR: d.rmajorR, 
-        rminorR: d.rminorR,
-        type:d.type, 
-		name:d.lable,  
-		value: d.value,
-		value2: d.value2,
-		year: d.year, 
-		month: d.month        
-        };}
-		);
-	
+	oval_data2 = oval_data.map(d => {
+		return {
+      // cx:d.order, // time in months
+      cx:d.month, // time in months
+      // cy:d.index, // subjects ordered
+      cy: Math.ceil(d.cx/12), // subjects ordered
+      rmajor: d.rmajor,
+      rminor: d.rminor,
+      rmajorR: d.rmajorR,
+      rminorR: d.rminorR,
+      type:d.type,
+			name:d.lable,
+			value: d.value,
+			value2: d.value2,
+			year: d.year,
+			month: d.month
+    };
+	});
+
 	console.log('compute min max for blanket data---------')
 	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[0].rminor)
 	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[oval_data2.length-1].rminor)
@@ -44,24 +45,34 @@
 
 	let topics = [...new Set(oval_data2.map((d) => d.name))];
 	var i;
-    let dataNew = [];
-    for (i = 0; i < topics.length; i++) {
+  let dataNew = [];
+  for (i = 0; i < topics.length; i++) {
 		var innerObj = {};
 		innerObj['name'] = topics[i]
-        innerObj['value'] = oval_data2.filter( d=>d.name === topics[i])
-        dataNew.push(innerObj)         
+    innerObj['value'] = oval_data2.filter( d=>d.name === topics[i])
+    dataNew.push(innerObj)
 	}
 	// let dataNew2 = [];
     // for (i = 0; i < topics.length; i++) {
-    //     dataNew2.push(oval_data2.filter(d=>d.name === topics[i]))         
+    //     dataNew2.push(oval_data2.filter(d=>d.name === topics[i]))
 	// }
+	// dataNew = [{name:'All topics', value: [dataNew[0].value]}, ...dataNew]
 
-	let value = [];
+	// dataMap = dataNew.reduce((acc,d) => {
+	// 	acc[d.name]
+	// 	return acc;
+	// }, {})
+
+	$:console.log('DATA NEW', dataNew)
+
+	let value = ['All topics']; // dataNew.map(d => d.name); // [dataNew[0].name, dataNew[1].name];
 	let dataNew2 = dataNew;
 	//dataNew.push({'name': 'All topics', 'value': dataNew2})
 	// console.log(dataNew2)
 	$:console.log('value=-=============')
 	$:console.log(value)
+
+	//
 </script>
 
 <main>
@@ -85,17 +96,17 @@
 		<FirstChart file="ai2html-output/graph1.html"/>
 		<!-- <Blanket data={selected}/> -->
 		{:else if block.type === 'blanket'}
-		<div class = "custom-select"> 
-		</div>	
+		<div class = "custom-select">
+		</div>
 		<div class='col-text select'>
 		<MaterialApp>
-			<Select activeClass="gray" bind:value chips multiple outlined items={dataNew}>Pick a topic</Select>
+			<Select activeClass="gray" bind:value chips multiple outlined items={[{name:'All topics', value:'All topics'}, ...dataNew.map(d => ({name: d.name, value: d.name}))]}>Pick a topic</Select>
 		</MaterialApp>
-		
+
 		</div>
-		{#key value}
-			<FullBlanket data={value}/>
-		{/key}
+
+		<FullBlanket data={dataNew.filter(d => value.indexOf(d.name) > -1 || (value[0] === 'All topics' && value.length === 1)).map(d => d.value)}/>
+
 		<!-- <FullBlanket data={dataNew}/> -->
 
 		{:else if block.type === 'footer'}
