@@ -9,16 +9,15 @@
 	import Knit from './components/Knit.svelte'
 	import FullBlanket from './components/FullBlanket.svelte'
 	import Blanket from './components/Blanket.svelte'
+	import {groups} from 'd3-array'
 	import Footer from './components/common/Footer.svelte'
 	import { Select, MaterialApp } from 'svelte-materialify';
 
 	export let content;
 	export let oval_data;
-	export let oval_data2;
 	export let oval_dataMbl;
 
-
-	oval_data2 = oval_data.map(d => {return {
+	let oval_data2 = oval_data.map(d => {return {
         // cx:d.order, // time in months
         cx:d.month, // time in months
         // cy:d.index, // subjects ordered
@@ -35,33 +34,13 @@
 		month: d.month        
         };}
 		);
-	
-	console.log('compute min max for blanket data---------')
-	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[0].rminor)
-	console.log(oval_data2.sort((a,b)=>b.rminor-a.rminor)[oval_data2.length-1].rminor)
-	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[0].rminorR)
-	console.log(oval_data2.sort((a,b)=>b.rminorR-a.rminorR)[oval_data2.length-1].rminorR)
-
+		
 	let topics = [...new Set(oval_data2.map((d) => d.name))];
-	var i;
-    let dataNew = [];
-    for (i = 0; i < topics.length; i++) {
-		var innerObj = {};
-		innerObj['name'] = topics[i]
-        innerObj['value'] = oval_data2.filter( d=>d.name === topics[i])
-        dataNew.push(innerObj)         
-	}
-	// let dataNew2 = [];
-    // for (i = 0; i < topics.length; i++) {
-    //     dataNew2.push(oval_data2.filter(d=>d.name === topics[i]))         
-	// }
+	let groupedData = groups(oval_data2, d => d.name)
 
 	let value = [];
-	let dataNew2 = dataNew;
-	//dataNew.push({'name': 'All topics', 'value': dataNew2})
-	// console.log(dataNew2)
-	$:console.log('value=-=============')
-	$:console.log(value)
+	value = ['Depression', 'ADHD', 'Addiction', 'Alcoholism', 'Grief', 'Breakup'];
+
 </script>
 
 <main>
@@ -89,15 +68,14 @@
 		</div>	
 		<div class='col-text select'>
 		<MaterialApp>
-			<Select activeClass="gray" bind:value chips multiple outlined items={dataNew}>Pick a topic</Select>
+			<Select activeClass="gray" bind:value chips multiple outlined items={topics}>Pick a topic</Select>
 		</MaterialApp>
 		
 		</div>
 		{#key value}
-			<FullBlanket data={value}/>
-		{/key}
+		<FullBlanket data={groupedData.filter(d=> value.includes(d[0]))}/>
 		<!-- <FullBlanket data={dataNew}/> -->
-
+		{/key}
 		{:else if block.type === 'footer'}
 		<Footer>
 			<div slot="about">
