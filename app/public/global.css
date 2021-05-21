@@ -36,13 +36,12 @@ h2 { font-size: 2.2rem !important; margin-bottom: 4rem;}
 h3 { font-size: 1.6rem !important; }
 h4 {
 	font-family: 'Roboto', sans-serif;
-	font-weight: 700 !important;;
-	font-size: 1rem !important;
-	letter-spacing: 100;
-	text-transform: uppercase;
-	margin-bottom:0;
-	padding-bottom:0;
+	font-weight: 700 !important;
+	margin: 0 auto !important;
+	font-size: 2rem !important;
 	line-height: 1.5 !important;
+ 	display: flex !important;
+
 }
 p { 
 	font-size: 1.1rem !important;
@@ -78,7 +77,7 @@ a:hover {
 	font-family: 'Roboto', sans-serif;
 }
 
-.col, .col-text, .wide, .square {
+.col, .col-text, .col-texth1, .wide, .square {
 	margin: 0 auto;
 	width: 100%;
 }
@@ -100,7 +99,7 @@ a:hover {
 }
 
 
-.col-text {
+.col-text, .col-texth1 {
 	padding: 0 1rem;
 }
 
@@ -169,7 +168,7 @@ menu {
 	}
 
 
-	.col, .col-text { width:42rem; }
+	.col, .col-text, .col-texth1 { width:42rem; }
 	.wide { width:60rem; }
 	.square {
 		width: 13rem;
