@@ -96,8 +96,6 @@
 		<Ai2html file={`ai2html-output/${block.file}`}/>
 		<!-- <Blanket data={selected}/> -->
 		{:else if block.type === 'blanket'}
-		<div class = "custom-select">
-		</div>
 		<div class='col-text select'>
 		<MaterialApp>
 			<Select activeClass="gray" bind:value chips multiple outlined items={[{name:'All topics', value:'All topics'}, ...dataNew.map(d => ({name: d.name, value: d.name}))]}>Pick a topic</Select>
