@@ -96,8 +96,6 @@
 		<Ai2html file={`ai2html-output/${block.file}`}/>
 		<!-- <Blanket data={selected}/> -->
 		{:else if block.type === 'blanket'}
-		<div class = "custom-select">
-		</div>
 		<div class='col-text select'>
 		<MaterialApp>
 			<Select activeClass="gray" bind:value chips multiple outlined items={[{name:'All topics', value:'All topics'}, ...dataNew.map(d => ({name: d.name, value: d.name}))]}>Pick a topic</Select>
@@ -122,7 +120,7 @@
 				{/each}
 			</div>
 			<div slot="team">
-				Núria Altimir, Laura Aragó, Spe Chen and Ànnia Monreal.
+				<a href='https://twitter.com/naltimir'>Núria Altimir</a>, <a href='https://twitter.com/arago_la'>Laura Aragó</a>, <a href='http://spepechen.github.io/'>Spe Chen</a> and <a href='https://twitter.com/bbbcccnnn'>Ànnia Monreal</a>.
 			</div>
 		</Footer>
 		{/if}
