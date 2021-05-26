@@ -19,9 +19,9 @@
                 
                 
                 <h4>About the data</h4>
-                <p><slot name='about'></slot></p>
-                <h4>The project</h4>
                 <p><slot name='data'></slot></p>
+                <h4>The project</h4>
+                <p><slot name='about'></slot></p>
             </Col>
             <Col cols={12} sm={12} md={4}>
                 <h4>Made by</h4>
