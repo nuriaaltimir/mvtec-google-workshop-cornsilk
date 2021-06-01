@@ -75,8 +75,8 @@
       const item = dataMap[row][col];
       tooltipTip = `
         On <b>${timeFormat('%B %Y')(new Date(item.year, item.month - 1, 1))}</b>
-          there was an index of <span class="requested">${format(',.2~f')(item.value)}</span> 
-          searches asking for help for and <span class="offered">${format(',.2~f')(item.value2)}</span> 
+          there was an index of <span class="requested">${format(',.2~f')(item.value2)}</span> 
+          searches asking for help for and <span class="offered">${format(',.2~f')(item.value)}</span> 
           offering it related to <b>${topic}</b>
         <br/>
       `
